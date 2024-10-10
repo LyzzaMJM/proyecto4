@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* Color de fondo suave */
+}
+
+.navbar {
+    background-color: #AFD06E; /* Color de fondo del navbar */
+    color: #ffffff; /* Color del texto */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.navbar-brand {
+    color: #ffffff; /* Color del título */
+    margin-bottom: 20px;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff; /* Color de los enlaces */
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #fd8d65; /* Color al pasar el mouse */
+    border-radius: 5px; /* Bordes redondeados para los enlaces */
+}
+
+.content {
+    margin-left: 220px; /* Dejar espacio para la navbar */
+    padding: 20px;
+}
+
+
+
+
