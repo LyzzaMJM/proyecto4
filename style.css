@@ -1,37 +1,59 @@
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #ffffff; /* Color de fondo suave */
+    background-color: #f7f8fa;
 }
 
 .navbar {
-    background-color: #AFD06E; /* Color de fondo del navbar */
-    color: #ffffff; /* Color del texto */
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
+  background-color: #AFD06E;
 }
 
 .navbar-brand {
-    color: #ffffff; /* Color del título */
-    margin-bottom: 20px;
+  color: #fff;
+  font-weight: bold;
 }
 
 .navbar-nav .nav-link {
-    color: #ffffff; /* Color de los enlaces */
-    transition: background-color 0.3s ease;
+  color: #fff;
+}
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.post-box {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.feed {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.sidebar {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.friend-list img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.profile-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.profile-section img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
-.navbar-nav .nav-link:hover {
-    background-color: #fd8d65; /* Color al pasar el mouse */
-    border-radius: 5px; /* Bordes redondeados para los enlaces */
+.profile-section h5 {
+  margin: 0;
 }
-
-.content {
-    margin-left: 220px; /* Dejar espacio para la navbar */
-    padding: 20px;
-}
-
-
-
-
