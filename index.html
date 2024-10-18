@@ -1,176 +1,130 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Firebase Demo</title>
+    </head>
+    <body>
+        <img class="wave" src="assets/img/wave.png">
+        <div class="container">
+            <div class="img">
+                <img src="assets/img/bg.svg">
+            </div>
+            <div class="login-content">
+                <form action="index.html">
+                    <img src="assets/img/avatar.svg">
+                    <h2 class="title">Inicio</h2>
+                       <div class="input-div one">
+                          <div class="i">
+                                  <i class="fas fa-user"></i>
+                          </div>
+                          <div class="div">
+                                  <h5>Usuario</h5>
+                                  <input type="text" class="input">
+                          </div>
+                       </div>
+                       <div class="input-div pass">
+                          <div class="i"> 
+                               <i class="fas fa-lock"></i>
+                          </div>
+                          <div class="div">
+                               <h5>Contraseña</h5>
+                               <input type="password" class="input">
+                       </div>
+                    </div>
+                    <input type="submit" class="btn" value="Login">
+                    <p>¿No tienes una cuenta?<a href="#registerForm">Por favor, Registrate</a></p>
+                </form>
+            </div>
+        </div>
+        <div id="registerForm" class="mt-5 d-none">
+            <h3>Registrarse</h3>
+            <form id="registerNewUserForm" aria-labelledby="registerFormHeading">
+              <div class="mb-3">
+                <label for="registerEmail" class="form-label">Correo Electrónico</label>
+                <input type="email" id="registerEmail" class="form-control" placeholder="Ingresa tu correo" required aria-required="true">
+              </div>
+              <div class="mb-3">
+                <label for="registerPassword" class="form-label">Contraseña</label>
+                <input type="password" id="registerPassword" class="form-control" placeholder="Ingresa tu contraseña" required aria-required="true">
+              </div>
+              <button type="submit" class="btn btn-primary" aria-label="Registrar">Registrar</button>
+              <button type="button" id="backToMain2" class="btn btn-secondary" aria-label="Volver al menú principal">Volver</button>
+            </form>
+          </div>
+    
+
+</body>
+</html> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-        
+    <!-- CDN Bootstrap Icon-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- CDN Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- CDN Css Personalizado -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Iniciar Sesión</title>
 </head>
 <body>
-    
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">MySocial</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Notifications</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main content -->
-  <div class="container mt-4">
-    <div class="row">
-      <!-- Left Sidebar: Profile and Friends -->
-      <div class="col-lg-3">
-        <div class="sidebar">
-          <!-- Profile Section -->
-          <div class="profile-section">
-            <img src="https://via.placeholder.com/100" alt="Profile Picture">
-            <h5>John Doe</h5>
-            <p>@johndoe</p>
-          </div>
-          <!-- Friend List -->
-          <h5>Friends</h5>
-          <ul class="list-unstyled friend-list">
-            <li class="mb-2">
-              <img src="https://via.placeholder.com/40" alt="Friend 1">
-              <span>Jane Smith</span>
-            </li>
-            <li class="mb-2">
-              <img src="https://via.placeholder.com/40" alt="Friend 2">
-              <span>Paul Walker</span>
-            </li>
-            <li class="mb-2">
-              <img src="https://via.placeholder.com/40" alt="Friend 3">
-              <span>Emily Johnson</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Feed -->
-      <div class="col-lg-6">
-
-
-        
-        <div class="container mt-5">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title text-center">Noticias o Frase del Día</h2>
-                    <div id="news-content" class="card-text text-center"></div>
-                    <button id="new-quote" class="btn btn-primary btn-block mt-3">Mostrar otra noticia/frase</button>
-                </div>
+  <!-- Formulario de inicio de sesión -->
+    <img class="wave" src="assets/img/wave.png">
+    <div id="loginForm" class="container mt-5">
+        <h3>Iniciar sesión</h3>
+        <form id="login" aria-labelledby="loginFormHeading">
+            <div class="mb-3">
+                <label for="loginEmail" class="form-label">Correo Electrónico</label>
+                <input type="email" id="loginEmail" class="form-control" placeholder="Ingresa tu correo" required autocomplete="email">
             </div>
-        </div>
-        
-        <br>
-
-        <!-- Post box -->
-        <div class="post-box mb-4">
-          <div class="d-flex">
-            <img src="https://via.placeholder.com/50" class="profile-pic me-3" alt="Profile Picture">
-            <input id="pensamientos" type="text" class="form-control" placeholder="What's on your mind?">
-          </div>
-          <div class="mt-3">
-            <button id="boton-post" class="btn btn-primary">Post</button>
-          </div>
-        </div>
-
-        <!-- Feed posts -->
-        <div class="feed">
-          <div class="d-flex mb-3">
-            <img src="https://via.placeholder.com/50" class="profile-pic me-3" alt="Profile Picture">
-            <div>
-              <h6 class="mb-1">Jane Smith</h6>
-              <small>2 hrs ago</small>
+            <div class="mb-3">
+                <label for="loginPassword" class="form-label">Contraseña</label>
+                <input type="password" id="loginPassword" class="form-control" placeholder="Ingresa tu contraseña" required autocomplete="current-password">
             </div>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, urna eu tincidunt consectetur, nisi nunc aliquam ex, non dignissim felis arcu a felis.</p>
-          <div class="d-flex justify-content-between">
-            <button id="boton-like" class="btn btn-outline-primary">Like</button>
-            <button id="boton-comentario" class="btn btn-outline-primary">Comment</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Sidebar: Events -->
-      <div class="col-lg-3">
-        <div class="sidebar">
-          <h5>Upcoming Events</h5>
-          <ul class="list-unstyled">
-            <li class="mb-2">
-              <strong>Event 1</strong><br>
-              <small>Tomorrow</small>
-            </li>
-            <li class="mb-2">
-              <strong>Event 2</strong><br>
-              <small>Friday</small>
-            </li>
-            <li class="mb-2">
-              <strong>Event 3</strong><br>
-              <small>Next Week</small>
-            </li>
-          </ul>
-        </div>
-      </div>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+            <button id="loginGoogleBtn" class="btn btn-danger mt-2" aria-label="Iniciar Sesión con Google">Iniciar Sesión con Google</button>
+            <button id="showRegisterForm" type="button" class="btn btn-link mt-3" aria-label="Registrarse">¿No tienes cuenta? Regístrate aquí</button>
+        </form>
     </div>
+  
+  <!-- Formulario de registro -->
+  <div id="registerForm" class="container mt-5 d-none">
+      <h3>Registrarse</h3>
+      <form id="register" aria-labelledby="registerFormHeading">
+          <div class="mb-3">
+              <label for="registerEmail" class="form-label">Correo Electrónico</label>
+              <input type="email" id="registerEmail" class="form-control" placeholder="Ingresa tu correo" required autocomplete="email">
+          </div>
+          <div class="mb-3">
+              <label for="registerPassword" class="form-label">Contraseña</label>
+              <input type="password" id="registerPassword" class="form-control" placeholder="Ingresa tu contraseña" required autocomplete="new-password">
+          </div>
+          <button type="submit" class="btn btn-primary">Registrar</button>
+          <button id="backToLogin" type="button" class="btn btn-secondary mt-2" aria-label="Volver al inicio de sesión">Volver</button>
+      </form>
   </div>
 
-  
-  <p>hola</p>
-
-
-  <footer id="footer" class="text py-4">
-    <div class="container text-center">
-        <p id="footer-p" class="mb-0">© 2024 Tu Empresa. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-
-
-
-
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- JQUERY-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <!-- APP -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script> -->
-
-  <!-- FIREBASE - AUTENTICACION -->
-  <!--<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script> -->
-
-  <!-- CDN Firebase database -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> -->
-
-   
-
-  <!-- SCRIPT -->
-  <script src="js/script.js"></script>
+  <script type="module" src="assets/js/script.js"></script>
 </body>
 </html>
+
+
+

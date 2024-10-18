@@ -1,0 +1,107 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs, getDoc, onSnapshot, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAjB7gwIhRn43H0_LFpJXk2HtXfheuD1Ak",
+  authDomain: "academy-a2996.firebaseapp.com",
+  projectId: "academy-a2996",
+  storageBucket: "academy-a2996.appspot.com",
+  messagingSenderId: "249035506580",
+  appId: "1:249035506580:web:e43fa82c55fa9622940581",
+  measurementId: "G-QTXSZZEDH5"
+};
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const provider = new GoogleAuthProvider(); // Proveedor de Google
+
+// console.log(auth);
+
+// Función para registrar un nuevo usuario
+export function registerUser(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            console.log("Registro exitoso. ¡Bienvenido!");
+            window.location.href = 'casas.html';
+        })
+        .catch((error) => {
+            console.error("Error al registrar:", error.code, error.message);
+            alert("Error al registrar: " + error.message);
+        });
+}
+
+// Función para iniciar sesión
+export function loginUser(email, password) {
+    return signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            console.log(userCredential);            
+            console.log("Inicio de sesión exitoso. ¡Bienvenido!");
+            window.location.href = 'casas.html';
+        })
+        .catch((error) => {
+            console.error("Error al iniciar sesión:", error.code, error.message);
+            alert("Error al iniciar sesión: " + error.message);
+        });
+}
+
+// Función para iniciar sesión con Google
+export function loginWithGoogle() {
+    return signInWithPopup(auth, provider)
+        .then((result) => {
+            console.log("Inicio de sesión con Google exitoso. ¡Bienvenido!", result.user);
+            window.location.href = 'casas.html';
+        })
+        .catch((error) => {
+            console.error("Error al iniciar sesión con Google:", error.code, error.message);
+            alert("Error al iniciar sesión con Google: " + error.message);
+        });
+}
+
+// // Función para agregar una tarea
+// export function saveTask(title, description) {
+//     console.log("Saving task:", title, description);
+//     return addDoc(collection(db, 'tasks'), {
+//         title: title,
+//         description: description
+//     });
+// }
+
+// // Función carga una única vez todas las tareas desde la colección 'tasks'.
+// export function getTasks() {
+//     console.log("Fetching tasks list");
+//     return getDocs(collection(db, 'tasks'));
+// }
+
+// // Función escucha los cambios en tiempo real en la colección 'tasks'.
+// // Crea una suscripción. Cada vez que se agregue, elimine o actualice un documento, el callback se ejecutará automáticamente.
+// export function onGetTasks(callback) {
+//     return onSnapshot(collection(db, 'tasks'), callback);
+// }
+
+// // Función para obtener una tarea específica
+// export function getTask(id) {
+//     console.log("Fetching task:", id);
+//     return getDoc(doc(db, 'tasks', id));
+// }
+
+// // Función para actualizar una tarea
+// export function updateTask(id, newFields) {
+//     console.log("Updating Task:", id);
+//     return updateDoc(doc(db, 'tasks', id), newFields);
+// }
+
+// // Función para eliminar una tarea
+// export function deleteTask(id) {
+//     console.log("Deleting task:", id);
+//     return deleteDoc(doc(db, "tasks", id));
+// }
+
+// // Exportar autenticación y base de datos
+// export { auth };
+
+// // export { auth, db };
