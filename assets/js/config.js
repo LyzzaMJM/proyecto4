@@ -27,7 +27,7 @@ export function registerUser(email, password) {
     return createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log("Registro exitoso. ¡Bienvenido!");
-            window.location.href = 'casas.html';
+            window.location.href = '../assets/html/casas.html';
         })
         .catch((error) => {
             console.error("Error al registrar:", error.code, error.message);
@@ -41,7 +41,7 @@ export function loginUser(email, password) {
         .then((userCredential) => {
             console.log(userCredential);            
             console.log("Inicio de sesión exitoso. ¡Bienvenido!");
-            window.location.href = 'casas.html';
+            window.location.href = '../assets/html/casas.html';
         })
         .catch((error) => {
             console.error("Error al iniciar sesión:", error.code, error.message);
@@ -54,7 +54,7 @@ export function loginWithGoogle() {
     return signInWithPopup(auth, provider)
         .then((result) => {
             console.log("Inicio de sesión con Google exitoso. ¡Bienvenido!", result.user);
-            window.location.href = 'casas.html';
+            window.location.href = '../assets/html/casas.html';
         })
         .catch((error) => {
             console.error("Error al iniciar sesión con Google:", error.code, error.message);
