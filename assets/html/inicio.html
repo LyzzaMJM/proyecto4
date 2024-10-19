@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/inicio.css">
+</head>
+<body>
+    
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MySocial</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Notifications</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Left Sidebar: Profile and Friends -->
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <!-- Profile Section -->
+          <div class="profile-section">
+            <img src="https://via.placeholder.com/100" alt="Profile Picture">
+            <h5>John Doe</h5>
+            <p>@johndoe</p>
+          </div>
+          <!-- Friend List -->
+          <h5>Friends</h5>
+          <ul class="list-unstyled friend-list">
+            <li class="mb-2">
+              <img src="https://via.placeholder.com/40" alt="Friend 1">
+              <span>Jane Smith</span>
+            </li>
+            <li class="mb-2">
+              <img src="https://via.placeholder.com/40" alt="Friend 2">
+              <span>Paul Walker</span>
+            </li>
+            <li class="mb-2">
+              <img src="https://via.placeholder.com/40" alt="Friend 3">
+              <span>Emily Johnson</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Feed -->
+      <div class="col-lg-6">
+
+
+        
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Noticias o Frase del Día</h2>
+                    <div id="news-content" class="card-text text-center"></div>
+                    <button id="new-quote" class="btn btn-primary btn-block mt-3">Mostrar otra noticia/frase</button>
+                </div>
+            </div>
+        </div>
+        
+        <br>
+
+        <!-- Post box -->
+        <div class="post-box mb-4">
+          <div class="d-flex">
+            <img src="https://via.placeholder.com/50" class="profile-pic me-3" alt="Profile Picture">
+            <input id="pensamientos" type="text" class="form-control" placeholder="What's on your mind?">
+          </div>
+          <div class="mt-3">
+            <button id="boton-post" class="btn btn-primary">Post</button>
+          </div>
+        </div>
+
+        <!-- Feed posts -->
+        <div class="feed">
+          <div class="d-flex mb-3">
+            <img src="https://via.placeholder.com/50" class="profile-pic me-3" alt="Profile Picture">
+            <div>
+              <h6 class="mb-1">Jane Smith</h6>
+              <small>2 hrs ago</small>
+            </div>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, urna eu tincidunt consectetur, nisi nunc aliquam ex, non dignissim felis arcu a felis.</p>
+          <div class="d-flex justify-content-between">
+            <button id="boton-like" class="btn btn-outline-primary">Like</button>
+            <button id="boton-comentario" class="btn btn-outline-primary">Comment</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar: Events -->
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <h5>Upcoming Events</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <strong>Event 1</strong><br>
+              <small>Tomorrow</small>
+            </li>
+            <li class="mb-2">
+              <strong>Event 2</strong><br>
+              <small>Friday</small>
+            </li>
+            <li class="mb-2">
+              <strong>Event 3</strong><br>
+              <small>Next Week</small>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <footer id="footer" class="text py-4">
+    <div class="container text-center">
+        <p id="footer-p" class="mb-0">© 2024 Tu Empresa. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- JQUERY-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- APP -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script> -->
+
+  <!-- FIREBASE - AUTENTICACION -->
+  <!--<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script> -->
+
+  <!-- CDN Firebase database -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> -->
+
+   
+
+  <!-- SCRIPT -->
+  <script src="/assets/js/"></script>
+  
+</body>
+</html>
