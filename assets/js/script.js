@@ -1,14 +1,13 @@
 import { registerUser, loginUser, loginWithGoogle } from "./config.js";
 
-<<<<<<< HEAD
 // MOVIMIENTO DE LOGIN A REGISTER
 const loginBtn = document.querySelector("#login");
 const registerBtn = document.querySelector("#register");
-const loginForm = document.querySelector("#loginForm");
-const registerForm = document.querySelector("#registerForm");
+const loginForm = document.querySelector(".login-form");
+const registerForm = document.querySelector(".register-form");
 
 loginBtn.addEventListener('click', () => {
-    loginBtn.style.backgroundColor = "21264D"; // Asegúrate de que sea un color válido
+    loginBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
     registerBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
 
     loginForm.style.left = "50%";
@@ -22,7 +21,7 @@ loginBtn.addEventListener('click', () => {
 
 registerBtn.addEventListener('click', () => {
     loginBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
-    registerBtn.style.backgroundColor = "21264D";
+    registerBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
 
     loginForm.style.left = "150%";
     registerForm.style.left = "50%";
@@ -34,40 +33,16 @@ registerBtn.addEventListener('click', () => {
 });
 
 // Envío formulario de registro
-document.getElementById('registerForm').addEventListener('submit', (event) => {
+document.querySelector('.register-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
-    const user = document.getElementById('registerUser').value;
+    const user = document.getElementById('registerUser').value; // Añadido
 
     if (email && password && user) {
-        registerUser(email, password) // Eliminar user de aquí si no es necesario
+        registerUser(email, password, user)
             .then(() => {
-                document.getElementById('registerForm').reset();
-=======
-// Mostrar formulario de registro al hacer clic
-document.getElementById('showRegisterForm').addEventListener('click', () => {
-    document.getElementById('loginForm').classList.add('d-none');
-    document.getElementById('registerForm').classList.remove('d-none');
-});
-
-// Volver al formulario de inicio de sesión
-document.getElementById('backToLogin').addEventListener('click', () => {
-    document.getElementById('registerForm').classList.add('d-none');
-    document.getElementById('loginForm').classList.remove('d-none');
-});
-
-// Manejar el envío del formulario de registro
-document.getElementById('register').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const email = document.getElementById('registerEmail').value;
-    const password = document.getElementById('registerPassword').value;
-
-    if (email && password) {
-        registerUser(email, password)
-            .then(() => {
-                document.getElementById('register').reset();
->>>>>>> c4d173336eb33f76a11acff5469a112539507d3b
+                document.querySelector('.register-form').reset();
             })
             .catch((error) => {
                 alert(`Error: ${error.message}`);
@@ -77,13 +52,8 @@ document.getElementById('register').addEventListener('submit', (event) => {
     }
 });
 
-<<<<<<< HEAD
 // Envío formulario de inicio de sesión
-document.getElementById('loginForm').addEventListener('submit', (event) => {
-=======
-// Manejar el envío del formulario de inicio de sesión
-document.getElementById('login').addEventListener('submit', (event) => {
->>>>>>> c4d173336eb33f76a11acff5469a112539507d3b
+document.querySelector('.login-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
@@ -91,11 +61,7 @@ document.getElementById('login').addEventListener('submit', (event) => {
     if (email && password) {
         loginUser(email, password)
             .then(() => {
-<<<<<<< HEAD
-                document.getElementById('loginForm').reset();
-=======
-                document.getElementById('login').reset();
->>>>>>> c4d173336eb33f76a11acff5469a112539507d3b
+                document.querySelector('.login-form').reset();
             })
             .catch((error) => {
                 alert(`Error: ${error.message}`);
@@ -108,11 +74,5 @@ document.getElementById('login').addEventListener('submit', (event) => {
 // Iniciar sesión con Google
 document.getElementById('loginGoogleBtn').addEventListener('click', (event) => {
     event.preventDefault();
-<<<<<<< HEAD
     loginWithGoogle(); 
 });
-
-=======
-    loginWithGoogle();
-});
->>>>>>> c4d173336eb33f76a11acff5469a112539507d3b
