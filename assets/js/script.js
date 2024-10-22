@@ -1,25 +1,47 @@
 import { registerUser, loginUser, loginWithGoogle } from "./config.js";
 
-// Mostrar formulario de registro al hacer clic
-document.getElementById('showRegisterForm').addEventListener('click', () => {
-    document.getElementById('loginForm').classList.add('d-none');
-    document.getElementById('registerForm').classList.remove('d-none');
+// MOVIMIENTO DE LOGIN A REGISTER
+const loginBtn = document.querySelector("#login");
+const registerBtn = document.querySelector("#register");
+const loginForm = document.querySelector(".login-form");
+const registerForm = document.querySelector(".register-form");
+
+loginBtn.addEventListener('click', () => {
+    loginBtn.style.backgraundColor = "21264D";
+    registerBtn.style.backgraundColor = "rgba(255, 255, 255, 0.2)";
+
+    loginForm.style.left = "50%";
+    registerForm.style.left = "-50%"
+
+    loginForm.style.opacity = 1;
+    registerForm.style.opacity = 0;
+
+    document.querySelector(".col-1").style.borderRadius = "0 30% 20% 0";
 });
 
-// Volver al formulario de inicio de sesión
-document.getElementById('backToLogin').addEventListener('click', () => {
-    document.getElementById('registerForm').classList.add('d-none');
-    document.getElementById('loginForm').classList.remove('d-none');
+registerBtn.addEventListener('click', () => {
+    loginBtn.style.backgraundColor = "rgba(255, 255, 255, 0.2)";
+    registerBtn.style.backgraundColor = "21264D";
+
+    loginForm.style.left = "150%";
+    registerForm.style.left = "50%"
+
+    loginForm.style.opacity = 0;
+    registerForm.style.opacity = 1;
+
+    document.querySelector(".col-1").style.borderRadius = "0 20% 30% 0";
 });
 
-// Manejar el envío del formulario de registro
+
+// Envio formulario de registro
 document.getElementById('register').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
+    // const user = document.getElementById('registerUser').value;
 
-    if (email && password) {
-        registerUser(email, password)
+    if (email && password && user) {
+        registerUser(email, password, user)
             .then(() => {
                 document.getElementById('register').reset();
             })
@@ -31,7 +53,7 @@ document.getElementById('register').addEventListener('submit', (event) => {
     }
 });
 
-// Manejar el envío del formulario de inicio de sesión
+// Envio formulario de inicio de sesion
 document.getElementById('login').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
@@ -53,5 +75,5 @@ document.getElementById('login').addEventListener('submit', (event) => {
 // Iniciar sesión con Google
 document.getElementById('loginGoogleBtn').addEventListener('click', (event) => {
     event.preventDefault();
-    loginWithGoogle();
+    loginWithGoogle(); 
 });
