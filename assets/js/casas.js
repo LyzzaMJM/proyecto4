@@ -1,3 +1,6 @@
+import { auth } from "./configuracion.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
 // Evento para el botón de "Salir"
 document.getElementById('logout-button').addEventListener('click', function() {
     // Aquí puedes agregar la funcionalidad que necesites al hacer clic en "Salir"
@@ -30,3 +33,14 @@ botonesUnirme.forEach((boton, index) => {
     });
 });
 
+
+
+// onAuthStateChanged
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log("Usuario está autenticado:", user);
+    } else {
+        console.log("Usuario no está autenticado.");
+        window.location.href = 'index.html'; // Redirige si no hay usuario
+    }
+});
