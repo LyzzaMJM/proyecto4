@@ -21,15 +21,18 @@
                 <img src="assets/img/brujita.png" class="form-image">
                 <img src="assets/img/white-outline.png" alt="">
             </div>
+            <!-- <p class="featured-words">Estas a pocos minutos dee <span>DEEEEEEE</span></p> -->
         </div>
         <div class="col col-2">
             <div class="btn-box">
+                <button class="btn btn-1" id="login">Iniciar sesion</button>
+                <button class="btn btn-2" id="register">Registrate</button>
             </div>
 
             <!-- Login Form -->
-            <form id="loginForm" class="login-form"> <!-- Cambiado -->
+            <form id="login" class="login-form">
                 <div class="form-title">
-                    <span>Iniciar sesión</span>
+                    <span>Iniciar sesion</span>
                 </div>
                 <div class="form-inputs">
                     <div class="input-box">
@@ -43,9 +46,10 @@
                     <div class="forgot-pass">
                         <a href="#">¿Olvidaste tu contraseña?</a>
                     </div>
+
                     <div class="input-box">
-                        <button type="submit" class="input-submit"> <!-- Añadir type="submit" -->
-                            <span>Inicia sesión</span>
+                        <button class="input-submit">
+                            <span>Inicia sesion</span>
                             <i class="bx bx-right-arrow-alt"></i>
                         </button>
                     </div>
@@ -58,7 +62,7 @@
             </form>
 
             <!-- Register Form -->
-            <form id="registerForm" class="register-form"> <!-- Cambiado -->
+            <form id="register" class="register-form">
                 <div class="form-title">
                     <span>Crea una cuenta</span>
                 </div>
@@ -78,12 +82,18 @@
                     <div class="forgot-pass">
                         <a href="#">¿Olvidaste tu contraseña?</a>
                     </div>
+
                     <div class="input-box">
-                        <button type="submit" class="input-submit"> <!-- Añadir type="submit" -->
-                            <span>Regístrate</span>
+                        <button class="input-submit">
+                            <span>Registrate</span>
                             <i class="bx bx-right-arrow-alt"></i>
                         </button>
                     </div>
+                </div>
+                <div class="social-login">
+                    <button id="loginGoogleBtn"><i class="bx bxl-google"></i></button>
+                    <i class="bx bxl-facebook"></i>
+                    <i class="bx bxl-github"></i>
                 </div>
             </form>
         </div>
@@ -92,6 +102,3 @@
     <script type="module" src="assets/js/script.js"></script>
 </body>
 </html>
-
-
-

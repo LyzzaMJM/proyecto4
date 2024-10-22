@@ -3,8 +3,8 @@ import { registerUser, loginUser, loginWithGoogle } from "./config.js";
 // MOVIMIENTO DE LOGIN A REGISTER
 const loginBtn = document.querySelector("#login");
 const registerBtn = document.querySelector("#register");
-const loginForm = document.querySelector("#loginForm");
-const registerForm = document.querySelector("#registerForm");
+const loginForm = document.querySelector(".login-form");
+const registerForm = document.querySelector(".register-form");
 
 loginBtn.addEventListener('click', () => {
     loginBtn.style.backgraundColor = "21264D";
@@ -35,14 +35,14 @@ registerBtn.addEventListener('click', () => {
 });
 
 // Envío formulario de registro
-document.getElementById('registerForm').addEventListener('submit', (event) => {
+document.querySelector('.register-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
-    const user = document.getElementById('registerUser').value;
+    const user = document.getElementById('registerUser').value; // Añadido
 
     if (email && password && user) {
-        registerUser(email, password) // Eliminar user de aquí si no es necesario
+        registerUser(email, password, user)
             .then(() => {
                 document.getElementById('registerForm').reset();
             })
