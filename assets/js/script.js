@@ -1,5 +1,6 @@
 import { registerUser, loginUser, loginWithGoogle } from "./config.js";
 
+<<<<<<< HEAD
 // MOVIMIENTO DE LOGIN A REGISTER
 const loginBtn = document.querySelector("#login");
 const registerBtn = document.querySelector("#register");
@@ -43,6 +44,30 @@ document.getElementById('registerForm').addEventListener('submit', (event) => {
         registerUser(email, password) // Eliminar user de aquí si no es necesario
             .then(() => {
                 document.getElementById('registerForm').reset();
+=======
+// Mostrar formulario de registro al hacer clic
+document.getElementById('showRegisterForm').addEventListener('click', () => {
+    document.getElementById('loginForm').classList.add('d-none');
+    document.getElementById('registerForm').classList.remove('d-none');
+});
+
+// Volver al formulario de inicio de sesión
+document.getElementById('backToLogin').addEventListener('click', () => {
+    document.getElementById('registerForm').classList.add('d-none');
+    document.getElementById('loginForm').classList.remove('d-none');
+});
+
+// Manejar el envío del formulario de registro
+document.getElementById('register').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+
+    if (email && password) {
+        registerUser(email, password)
+            .then(() => {
+                document.getElementById('register').reset();
+>>>>>>> c4d173336eb33f76a11acff5469a112539507d3b
             })
             .catch((error) => {
                 alert(`Error: ${error.message}`);
@@ -52,8 +77,13 @@ document.getElementById('registerForm').addEventListener('submit', (event) => {
     }
 });
 
+<<<<<<< HEAD
 // Envío formulario de inicio de sesión
 document.getElementById('loginForm').addEventListener('submit', (event) => {
+=======
+// Manejar el envío del formulario de inicio de sesión
+document.getElementById('login').addEventListener('submit', (event) => {
+>>>>>>> c4d173336eb33f76a11acff5469a112539507d3b
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
@@ -61,7 +91,11 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
     if (email && password) {
         loginUser(email, password)
             .then(() => {
+<<<<<<< HEAD
                 document.getElementById('loginForm').reset();
+=======
+                document.getElementById('login').reset();
+>>>>>>> c4d173336eb33f76a11acff5469a112539507d3b
             })
             .catch((error) => {
                 alert(`Error: ${error.message}`);
@@ -74,6 +108,11 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
 // Iniciar sesión con Google
 document.getElementById('loginGoogleBtn').addEventListener('click', (event) => {
     event.preventDefault();
+<<<<<<< HEAD
     loginWithGoogle(); 
 });
 
+=======
+    loginWithGoogle();
+});
+>>>>>>> c4d173336eb33f76a11acff5469a112539507d3b
