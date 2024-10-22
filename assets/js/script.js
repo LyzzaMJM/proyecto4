@@ -3,15 +3,15 @@ import { registerUser, loginUser, loginWithGoogle } from "./config.js";
 // MOVIMIENTO DE LOGIN A REGISTER
 const loginBtn = document.querySelector("#login");
 const registerBtn = document.querySelector("#register");
-const loginForm = document.querySelector(".login-form");
-const registerForm = document.querySelector(".register-form");
+const loginForm = document.querySelector("#loginForm");
+const registerForm = document.querySelector("#registerForm");
 
 loginBtn.addEventListener('click', () => {
-    loginBtn.style.backgraundColor = "21264D";
-    registerBtn.style.backgraundColor = "rgba(255, 255, 255, 0.2)";
+    loginBtn.style.backgroundColor = "21264D"; // Asegúrate de que sea un color válido
+    registerBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
 
     loginForm.style.left = "50%";
-    registerForm.style.left = "-50%"
+    registerForm.style.left = "-50%";
 
     loginForm.style.opacity = 1;
     registerForm.style.opacity = 0;
@@ -20,11 +20,11 @@ loginBtn.addEventListener('click', () => {
 });
 
 registerBtn.addEventListener('click', () => {
-    loginBtn.style.backgraundColor = "rgba(255, 255, 255, 0.2)";
-    registerBtn.style.backgraundColor = "21264D";
+    loginBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+    registerBtn.style.backgroundColor = "21264D";
 
     loginForm.style.left = "150%";
-    registerForm.style.left = "50%"
+    registerForm.style.left = "50%";
 
     loginForm.style.opacity = 0;
     registerForm.style.opacity = 1;
@@ -32,18 +32,17 @@ registerBtn.addEventListener('click', () => {
     document.querySelector(".col-1").style.borderRadius = "0 20% 30% 0";
 });
 
-
-// Envio formulario de registro
-document.getElementById('register').addEventListener('submit', (event) => {
+// Envío formulario de registro
+document.getElementById('registerForm').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
-    // const user = document.getElementById('registerUser').value;
+    const user = document.getElementById('registerUser').value;
 
     if (email && password && user) {
-        registerUser(email, password, user)
+        registerUser(email, password) // Eliminar user de aquí si no es necesario
             .then(() => {
-                document.getElementById('register').reset();
+                document.getElementById('registerForm').reset();
             })
             .catch((error) => {
                 alert(`Error: ${error.message}`);
@@ -53,8 +52,8 @@ document.getElementById('register').addEventListener('submit', (event) => {
     }
 });
 
-// Envio formulario de inicio de sesion
-document.getElementById('login').addEventListener('submit', (event) => {
+// Envío formulario de inicio de sesión
+document.getElementById('loginForm').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
@@ -62,7 +61,7 @@ document.getElementById('login').addEventListener('submit', (event) => {
     if (email && password) {
         loginUser(email, password)
             .then(() => {
-                document.getElementById('login').reset();
+                document.getElementById('loginForm').reset();
             })
             .catch((error) => {
                 alert(`Error: ${error.message}`);
@@ -77,3 +76,4 @@ document.getElementById('loginGoogleBtn').addEventListener('click', (event) => {
     event.preventDefault();
     loginWithGoogle(); 
 });
+

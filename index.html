@@ -21,18 +21,17 @@
                 <img src="assets/img/brujita.png" class="form-image">
                 <img src="assets/img/white-outline.png" alt="">
             </div>
-            <!-- <p class="featured-words">Estas a pocos minutos dee <span>DEEEEEEE</span></p> -->
         </div>
         <div class="col col-2">
             <div class="btn-box">
-                <button class="btn btn-1" id="login">Iniciar sesion</button>
-                <button class="btn btn-2" id="register">Registrate</button>
+                <button class="btn btn-1" id="login">Iniciar sesión</button>
+                <button class="btn btn-2" id="register">Regístrate</button>
             </div>
 
             <!-- Login Form -->
-            <form id="login" class="login-form">
+            <form id="loginForm" class="login-form"> <!-- Cambiado -->
                 <div class="form-title">
-                    <span>Iniciar sesion</span>
+                    <span>Iniciar sesión</span>
                 </div>
                 <div class="form-inputs">
                     <div class="input-box">
@@ -46,23 +45,22 @@
                     <div class="forgot-pass">
                         <a href="#">¿Olvidaste tu contraseña?</a>
                     </div>
-
                     <div class="input-box">
-                        <button class="input-submit">
-                            <span>Inicia sesion</span>
+                        <button type="submit" class="input-submit"> <!-- Añadir type="submit" -->
+                            <span>Inicia sesión</span>
                             <i class="bx bx-right-arrow-alt"></i>
                         </button>
                     </div>
                 </div>
                 <div class="social-login">
-                    <i class="bx bxl-google"></i>
+                    <button id="loginGoogleBtn"><i class="bx bxl-google"></i></button>
                     <i class="bx bxl-facebook"></i>
                     <i class="bx bxl-github"></i>
                 </div>
             </form>
 
             <!-- Register Form -->
-            <form id="register" class="register-form">
+            <form id="registerForm" class="register-form"> <!-- Cambiado -->
                 <div class="form-title">
                     <span>Crea una cuenta</span>
                 </div>
@@ -82,18 +80,12 @@
                     <div class="forgot-pass">
                         <a href="#">¿Olvidaste tu contraseña?</a>
                     </div>
-
                     <div class="input-box">
-                        <button class="input-submit">
-                            <span>Registrate</span>
+                        <button type="submit" class="input-submit"> <!-- Añadir type="submit" -->
+                            <span>Regístrate</span>
                             <i class="bx bx-right-arrow-alt"></i>
                         </button>
                     </div>
-                </div>
-                <div class="social-login">
-                    <button id="loginGoogleBtn"><i class="bx bxl-google"></i></button>
-                    <i class="bx bxl-facebook"></i>
-                    <i class="bx bxl-github"></i>
                 </div>
             </form>
         </div>
