@@ -1,0 +1,147 @@
+body {
+    background-color: #f7f8fa;
+}
+
+.navbar {
+  background-color: #AFD06E;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: #fff;
+}
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.post-box {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.feed {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.sidebar {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.friend-list img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.profile-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.profile-section img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-section h5 {
+  margin: 0;
+}
+
+
+
+
+#pensamientos {
+  background-color: #ffffff; /* Color de fondo del input */
+  color: #000000; /* Color del texto */
+  border: 1px solid #ccc; /* Borde del input */
+}
+
+#pensamientos:focus {
+  background-color: #e9f7cf; /* Cambia el fondo cuando está enfocado */
+  border-color: #AFD06E; /* Cambia el borde cuando está enfocado */
+  box-shadow: 0 0 5px 2px #AFD06E; /* Cambia el color del sombreado */
+}
+
+
+
+
+/*buttons*/
+/* Estilos para el botón "Mostrar otra noticia/frase" */
+#new-quote {
+  background-color: #fd8d65; 
+  border-color: #fd8d65;
+  color: #fff; 
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%; 
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#new-quote:hover {
+  background-color: #AFD06E; 
+  border-color: #AFD06E;
+  cursor: pointer;
+}
+
+/* Estilos para el botón "Post" */
+#boton-post {
+  background-color: #AFD06E; 
+  border-color: #AFD06E;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+#boton-post:hover {
+  background-color: #AFD06E; 
+  border-color: #AFD06E;
+  cursor: pointer;
+}
+
+/* Estilos para los botones "Like" y "Comment" */
+#boton-like, #boton-comentario {
+  background-color: transparent;
+  border: 1px solid #fd8d65;
+  color: #fd8d65;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 5px 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#boton-like:hover, #boton-comentario:hover {
+  background-color: #fd8d65;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
+
+
+/*FOOTER*/
+#footer {
+  margin-top: 20px; 
+  min-height: 60px; /* Aumentar la altura del pie de página */
+  background-color: #AFD06E;
+  color: white;
+}
+
+#footer-p {
+  text-align: center;
+
+}
