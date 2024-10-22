@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { getFirestore, collection, addDoc, getDocs, getDoc, onSnapshot, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAjB7gwIhRn43H0_LFpJXk2HtXfheuD1Ak",
@@ -12,20 +12,18 @@ const firebaseConfig = {
   measurementId: "G-QTXSZZEDH5"
 };
 
-
-// Initialize Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider(); // Proveedor de Google
-
-// console.log(auth);
 
 // Función para registrar un nuevo usuario
 export function registerUser(email, password) {
     return createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log("Registro exitoso. ¡Bienvenido!");
+            // Redirigir solo si se ha creado el usuario exitosamente
             window.location.href = 'assets/html/principal.html';
         })
         .catch((error) => {
@@ -38,7 +36,6 @@ export function registerUser(email, password) {
 export function loginUser(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential);            
             console.log("Inicio de sesión exitoso. ¡Bienvenido!");
             window.location.href = 'assets/html/principal.html';
         })

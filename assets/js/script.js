@@ -7,11 +7,11 @@ const loginForm = document.querySelector(".login-form");
 const registerForm = document.querySelector(".register-form");
 
 loginBtn.addEventListener('click', () => {
-    loginBtn.style.backgraundColor = "21264D";
-    registerBtn.style.backgraundColor = "rgba(255, 255, 255, 0.2)";
+    loginBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
+    registerBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
 
     loginForm.style.left = "50%";
-    registerForm.style.left = "-50%"
+    registerForm.style.left = "-50%";
 
     loginForm.style.opacity = 1;
     registerForm.style.opacity = 0;
@@ -20,11 +20,11 @@ loginBtn.addEventListener('click', () => {
 });
 
 registerBtn.addEventListener('click', () => {
-    loginBtn.style.backgraundColor = "rgba(255, 255, 255, 0.2)";
-    registerBtn.style.backgraundColor = "21264D";
+    loginBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+    registerBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
 
     loginForm.style.left = "150%";
-    registerForm.style.left = "50%"
+    registerForm.style.left = "50%";
 
     loginForm.style.opacity = 0;
     registerForm.style.opacity = 1;
@@ -32,18 +32,17 @@ registerBtn.addEventListener('click', () => {
     document.querySelector(".col-1").style.borderRadius = "0 20% 30% 0";
 });
 
-
-// Envio formulario de registro
-document.getElementById('register').addEventListener('submit', (event) => {
+// Envío formulario de registro
+document.querySelector('.register-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
-    // const user = document.getElementById('registerUser').value;
+    const user = document.getElementById('registerUser').value; // Añadido
 
     if (email && password && user) {
         registerUser(email, password, user)
             .then(() => {
-                document.getElementById('register').reset();
+                document.querySelector('.register-form').reset();
             })
             .catch((error) => {
                 alert(`Error: ${error.message}`);
@@ -53,8 +52,8 @@ document.getElementById('register').addEventListener('submit', (event) => {
     }
 });
 
-// Envio formulario de inicio de sesion
-document.getElementById('login').addEventListener('submit', (event) => {
+// Envío formulario de inicio de sesión
+document.querySelector('.login-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
@@ -62,7 +61,7 @@ document.getElementById('login').addEventListener('submit', (event) => {
     if (email && password) {
         loginUser(email, password)
             .then(() => {
-                document.getElementById('login').reset();
+                document.querySelector('.login-form').reset();
             })
             .catch((error) => {
                 alert(`Error: ${error.message}`);
