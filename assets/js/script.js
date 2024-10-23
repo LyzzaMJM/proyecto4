@@ -12,9 +12,6 @@ const housesBtn = document.getElementById('housesBtn');
 
 // Cambiar entre formularios
 loginBtn.addEventListener('click', () => {
-    loginBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
-    registerBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
-
     loginForm.style.left = "50%";
     registerForm.style.left = "-50%";
     registerForm.style.left = "-50%";
@@ -24,9 +21,6 @@ loginBtn.addEventListener('click', () => {
 });
 
 registerBtn.addEventListener('click', () => {
-    loginBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
-    registerBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
-
     loginForm.style.left = "150%";
     registerForm.style.left = "50%";
     registerForm.style.left = "50%";

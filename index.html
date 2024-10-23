@@ -12,6 +12,9 @@
     
     <!-- BOOTSTRAP ICONS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <!-- BOOTSTRAP ICONS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- STYLE -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -21,8 +24,9 @@
             <div class="image-layer">
                 <img src="assets/img/brujita.png" class="form-image" alt="Imagen decorativa">
                 <img src="assets/img/white-outline.png" alt="Contorno decorativo">
+                <img src="assets/img/brujita.png" class="form-image" alt="Imagen decorativa">
+                <img src="assets/img/white-outline.png" alt="Contorno decorativo">
             </div>
-            <!-- <p class="featured-words">Estas a pocos minutos dee <span>DEEEEEEE</span></p> -->
         </div>
         <div class="col col-2">
             <div class="btn-box">
@@ -33,7 +37,7 @@
             <!-- Login Form -->
             <form id="loginForm" class="login-form">
                 <div class="form-title">
-                    <span>Iniciar sesion</span>
+                    <span>Iniciar sesión</span>
                 </div>
                 <div class="form-inputs">
                     <div class="input-box">
@@ -86,10 +90,18 @@
                         </button>
                     </div>
                 </div>
-                <div class="social-login">
-                    <button id="loginGoogleBtn"><i class="bx bxl-google"></i></button>
-                    <i class="bx bxl-facebook"></i>
-                    <i class="bx bxl-github"></i>
+            </form>
+
+            <!-- Nueva sección después del registro -->
+            <div id="postRegisterSection" class="text-center" style="display:none;">
+                <h4 class="mb-4">¿Planeas estudiar o estás estudiando en una universidad o instituto?</h4>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-info" id="triviaBtn">
+                        <i class="bi bi-question-circle"></i> Ir a la Trivia
+                    </button>
+                    <button class="btn btn-success" id="housesBtn">
+                        <i class="bi bi-house"></i> Ir a las Casas
+                    </button>
                 </div>
             </form>
 
