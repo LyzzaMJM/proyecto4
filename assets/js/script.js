@@ -1,35 +1,31 @@
 import { registerUser, loginUser, loginWithGoogle } from "./config.js";
 
 // MOVIMIENTO DE LOGIN A REGISTER
-const loginBtn = document.querySelector("#login");
-const registerBtn = document.querySelector("#register");
-const loginForm = document.querySelector(".login-form");
-const registerForm = document.querySelector(".register-form");
+const loginBtn = document.querySelector("#loginBtn");
+const registerBtn = document.querySelector("#registerBtn");
+const loginForm = document.querySelector("#loginForm");
+const registerForm = document.querySelector("#registerForm");
+const postRegisterSection = document.getElementById('postRegisterSection');
+// Selecciona los botones de Trivia y Casas
+const triviaBtn = document.getElementById('triviaBtn');
+const housesBtn = document.getElementById('housesBtn');
 
+
+// Cambiar entre formularios
 loginBtn.addEventListener('click', () => {
-    loginBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
-    registerBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
-
     loginForm.style.left = "50%";
     registerForm.style.left = "-50%";
 
     loginForm.style.opacity = 1;
     registerForm.style.opacity = 0;
-
-    document.querySelector(".col-1").style.borderRadius = "0 30% 20% 0";
 });
 
 registerBtn.addEventListener('click', () => {
-    loginBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
-    registerBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
-
     loginForm.style.left = "150%";
     registerForm.style.left = "50%";
 
     loginForm.style.opacity = 0;
     registerForm.style.opacity = 1;
-
-    document.querySelector(".col-1").style.borderRadius = "0 20% 30% 0";
 });
 
 // Envío formulario de registro
@@ -37,14 +33,21 @@ document.querySelector('.register-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
-    const user = document.getElementById('registerUser').value; // Añadido
+    const user = document.getElementById('registerUser').value;
+
+    console.log(email, password, user); // Verificar que los valores sean correctos
 
     if (email && password && user) {
         registerUser(email, password, user)
             .then(() => {
                 document.querySelector('.register-form').reset();
+                // Oculta el formulario de registro
+                registerForm.style.display = 'none';
+                // Muestra la nueva sección
+                postRegisterSection.style.display = 'block';
             })
             .catch((error) => {
+                console.error(error); // Ver errores en la consola
                 alert(`Error: ${error.message}`);
             });
     } else {
@@ -74,5 +77,60 @@ document.querySelector('.login-form').addEventListener('submit', (event) => {
 // Iniciar sesión con Google
 document.getElementById('loginGoogleBtn').addEventListener('click', (event) => {
     event.preventDefault();
-    loginWithGoogle(); 
+    loginWithGoogle()
+        .then((userCredential) => {
+            const user = userCredential.user;
+            const email = user.email;
+
+            // Solicitar el nombre de usuario
+            const username = prompt("Por favor, ingresa tu nombre de usuario:");
+
+            // Lógica para registrar el usuario con nombre de usuario y correo
+            if (username) {
+                const userRef = db.collection('users').doc(email); // Usar el correo como ID único
+                userRef.set({
+                    email: email,
+                    username: username,
+                })
+                .then(() => {
+                    alert("Registro exitoso!");
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert(`Error al registrar: ${error.message}`);
+                });
+            } else {
+                alert("El nombre de usuario es requerido.");
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            alert(`Error al iniciar sesión con Google: ${error.message}`);
+        });
+});
+
+
+
+
+// Evento para el botón de Trivia
+triviaBtn.addEventListener('click', () => {
+    window.location.href = 'assets/html/trivia.html'; // Cambia esta ruta a la ubicación de tu página de trivia
+});
+
+// Evento para el botón de Casas
+housesBtn.addEventListener('click', () => {
+    window.location.href = 'assets/html/casas.html'; // Cambia esta ruta a la ubicación de tu página de casas
+});
+
+
+// Escuchar cambios en el estado de autenticación
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log('Usuario autenticado:', user);
+        // Aquí puedes redirigir a la página principal si el usuario ya está autenticado
+        window.location.href = 'assets/html/principal.html'; // Redirige a la página principal
+    } else {
+        console.log('No hay usuario autenticado');
+        // Aquí puedes mostrar el formulario de inicio de sesión o hacer otra cosa
+    }
 });
