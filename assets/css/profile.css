@@ -1,0 +1,215 @@
+/* Navegación */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+
+:root {
+  --blue: #AFD06E;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #c4cbd6;
+  --black2: #fd8d65;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== Navigation ================ */
+.navigation {
+  position: fixed;
+  left: 0; /* Asegura que la navegación esté pegada al lado izquierdo */
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 0; /* Elimina el borde si no es necesario */
+  transition: 0.5s;
+  overflow: hidden;
+  z-index: 999; /* Asegura que esté siempre en el frente */
+}
+
+
+/* Ajustes para cuando la barra de navegación está activa */
+.navigation.active {
+  width: 80px;
+}
+
+/* Ajuste dinámico del margen izquierdo del contenido principal */
+.main {
+  margin-left: 300px; /* Este valor coincide con el ancho de la barra de navegación */
+  transition: margin-left 0.5s; /* Transición suave al cambiar el margen */
+}
+
+/* Cuando la barra de navegación está activa (estrecha) */
+.navigation.active ~ .main {
+  margin-left: 80px; /* Ajustar margen cuando la barra lateral esté contraída */
+}
+
+.navigation ul {
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Main */
+
+/* Estilos para la sección Main y Topbar */
+.main {
+  background-color: #f1f1f1;
+  
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+
+  margin-bottom: 20px;
+  color: white;
+}
+
+/* Estilos para el ícono de menú */
+.topbar .toggle ion-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Estilos para la barra de búsqueda */
+.topbar .search {
+  flex-grow: 1;
+  margin-left: 20px;
+  position: relative;
+}
+
+.topbar .search input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px 40px 8px 10px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.topbar .search ion-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  font-size: 1.2rem;
+}
+
+/* Estilos para el usuario */
+.topbar .user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}

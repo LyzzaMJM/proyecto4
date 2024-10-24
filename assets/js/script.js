@@ -10,7 +10,6 @@ const postRegisterSection = document.getElementById('postRegisterSection');
 const triviaBtn = document.getElementById('triviaBtn');
 const housesBtn = document.getElementById('housesBtn');
 
-
 // Cambiar entre formularios
 loginBtn.addEventListener('click', () => {
     loginForm.style.left = "50%";
@@ -33,18 +32,20 @@ document.querySelector('.register-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
-    const user = document.getElementById('registerUser').value;
+    const fullName = document.getElementById('registerUser').value;
 
-    console.log(email, password, user); // Verificar que los valores sean correctos
+    console.log(email, password, fullName); 
 
-    if (email && password && user) {
-        registerUser(email, password, user)
+    if (email && password && fullName) {
+        registerUser(email, password, fullName)
             .then(() => {
                 document.querySelector('.register-form').reset();
                 // Oculta el formulario de registro
                 registerForm.style.display = 'none';
                 // Muestra la nueva sección
                 postRegisterSection.style.display = 'block';
+                // Oculta los botones de iniciar sesión y registro
+                document.querySelector('.btn-box').style.display = 'none'; // Asegúrate de que esta clase esté correcta
             })
             .catch((error) => {
                 console.error(error); // Ver errores en la consola
@@ -60,6 +61,7 @@ document.querySelector('.login-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
+
 
     if (email && password) {
         loginUser(email, password)
@@ -78,39 +80,28 @@ document.querySelector('.login-form').addEventListener('submit', (event) => {
 document.getElementById('loginGoogleBtn').addEventListener('click', (event) => {
     event.preventDefault();
     loginWithGoogle()
-        .then((userCredential) => {
-            const user = userCredential.user;
+        .then((result) => {
+            const user = result.user; // Obtén el usuario
             const email = user.email;
 
-            // Solicitar el nombre de usuario
-            const username = prompt("Por favor, ingresa tu nombre de usuario:");
-
             // Lógica para registrar el usuario con nombre de usuario y correo
-            if (username) {
-                const userRef = db.collection('users').doc(email); // Usar el correo como ID único
-                userRef.set({
-                    email: email,
-                    username: username,
-                })
-                .then(() => {
-                    alert("Registro exitoso!");
-                })
-                .catch((error) => {
-                    console.error(error);
-                    alert(`Error al registrar: ${error.message}`);
-                });
-            } else {
-                alert("El nombre de usuario es requerido.");
-            }
+            if (email) {
+                // Aquí podrías llamar a una función para registrar el usuario en Firestore, por ejemplo
+                registerUser(email, "someDefaultPassword", user.displayName) // Asegúrate de manejar la contraseña
+                    .then(() => {
+                        alert("Registro exitoso!");
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        alert(`Error al registrar: ${error.message}`);
+                    });
+            } 
         })
         .catch((error) => {
             console.error(error);
             alert(`Error al iniciar sesión con Google: ${error.message}`);
         });
 });
-
-
-
 
 // Evento para el botón de Trivia
 triviaBtn.addEventListener('click', () => {
@@ -120,17 +111,4 @@ triviaBtn.addEventListener('click', () => {
 // Evento para el botón de Casas
 housesBtn.addEventListener('click', () => {
     window.location.href = 'assets/html/casas.html'; // Cambia esta ruta a la ubicación de tu página de casas
-});
-
-
-// Escuchar cambios en el estado de autenticación
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        console.log('Usuario autenticado:', user);
-        // Aquí puedes redirigir a la página principal si el usuario ya está autenticado
-        window.location.href = 'assets/html/principal.html'; // Redirige a la página principal
-    } else {
-        console.log('No hay usuario autenticado');
-        // Aquí puedes mostrar el formulario de inicio de sesión o hacer otra cosa
-    }
 });
