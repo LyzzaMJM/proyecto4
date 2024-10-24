@@ -28,19 +28,11 @@ const provider = new GoogleAuthProvider(); // Proveedor de Google
 // Función para registrar un nuevo usuario
 export function registerUser(email, password, fullName) {
     return createUserWithEmailAndPassword(auth, email, password)
-    
         .then((userCredential) => {
             console.log("Registro exitoso. ¡Bienvenido!");
             addFullName(fullName);
         })
         .catch((error) => {
-            const errorCode = error.code;
-            if(errorCode == 'auth/email-already-in-use')
-                alert("El correo ya esta en uso")
-            else if(errorCode == 'auth/invalid-email')
-                alert("El correo no es valido")
-            else if(errorCode == 'auth/week-password')
-                alert("La contraseña debe tener al menos 6 caracteres")
             console.error("Error al registrar:", error.code, error.message);
             alert("Error al registrar: " + error.message);
         });
@@ -70,7 +62,6 @@ export function loginUser(email, password) {
         });
 }
 
-// Función para iniciar sesión con Google
 // Función para iniciar sesión con Google
 export function loginWithGoogle() {
     return signInWithPopup(auth, provider)
