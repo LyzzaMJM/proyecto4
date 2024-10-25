@@ -2,7 +2,6 @@ $(document).ready(function () {
     // Variables
     let currentQuestion = 0;
     const totalQuestions = $(".pregunta").length - 1; // -1 para no contar el resultado final
-    let hasChangedHouse = false;
 
     // Función para mostrar la siguiente pregunta
     function showNextQuestion() {
@@ -59,58 +58,27 @@ $(document).ready(function () {
     // Evento para el botón "Ir a mi feed"
     $("#goToFeedBtn").click(function () {
         const assignedHouse = $("#casaResultado").text().toLowerCase(); // Obtener la casa asignada
-        switch (assignedHouse) {
-            case 'athena':
-                window.location.href = 'athena_feed.html'; // Redirige al feed de Athena
-                break;
-            case 'luminaria':
-                window.location.href = 'luminaria_feed.html'; // Redirige al feed de Luminaria
-                break;
-            case 'nova':
-                window.location.href = 'nova_feed.html'; // Redirige al feed de Nova
-                break;
-            case 'salus':
-                window.location.href = 'salus_feed.html'; // Redirige al feed de Salus
-                break;
-            default:
-                alert('No se ha podido asignar una casa.');
-        }
+
+        // Redirigir al feed único
+        window.location.href = `feed.html?house=${encodeURIComponent(assignedHouse)}`;
     });
 
-    // Evento para el botón "Quiero cambiar de casa"
-    $("#changeHouseBtn").click(function () {
-        if (!hasChangedHouse) {
-            $("#warningMessage").show(); // Mostrar el mensaje de advertencia
-            $("#changeHouseModal").show(); // Muestra el modal
-        } else {
-            alert("Ya has cambiado de casa una vez. No puedes cambiar nuevamente.");
-        }
-    });
-
-    // Evento para cerrar el modal
-    $(".close-button").click(function() {
-        $("#changeHouseModal").hide();
-    });
-
-    // Confirmar el cambio de casa
-    $("#confirmChangeBtn").click(function () {
-        const newHouse = $("#newHouseInput").val().toLowerCase(); // Obtener valor de entrada
-
-        if (newHouse === "athena" || newHouse === "luminaria" || newHouse === "nova" || newHouse === "salus") {
-            $("#casaResultado").text(newHouse.charAt(0).toUpperCase() + newHouse.slice(1)); // Actualizar la casa
-            alert("Has cambiado a la casa " + newHouse.charAt(0).toUpperCase() + newHouse.slice(1) + ". Este será tu último cambio.");
-            hasChangedHouse = true; // Marcar que ya ha hecho un cambio
-            $("#changeHouseModal").hide(); // Oculta el modal
-        } else {
-            alert("La casa ingresada no es válida.");
-        }
-    });
-
-    // Evento para seleccionar la tarjeta
-    $(".radio-option input[type='radio']").change(function () {
-        // Quitar la clase 'selected' de todas las tarjetas
-        $(".radio-option").removeClass("selected");
-        // Agregar la clase 'selected' a la tarjeta seleccionada
-        $(this).closest('.radio-option').addClass("selected");
+    $(document).ready(function() {
+        // Selecciona todas las opciones de radio y añade un evento de cambio
+        $(".radio-option input[type='radio']").change(function () {
+            // Encuentra el contenedor .form-group más cercano
+            var parentGroup = $(this).closest('.form-group');
+            
+            // Quitar la clase 'selected' de todas las tarjetas en el mismo grupo
+            parentGroup.find(".radio-option").removeClass("selected");
+            
+            // Agregar la clase 'selected' a la tarjeta seleccionada
+            $(this).closest('.radio-option').addClass("selected");
+        });
+    
+        // Asegúrate de que las tarjetas respondan a los clics
+        $(".radio-option").click(function() {
+            $(this).find("input[type='radio']").prop("checked", true).change();
+        });
     });
 });

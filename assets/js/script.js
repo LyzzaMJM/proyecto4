@@ -115,3 +115,20 @@ housesBtn.addEventListener('click', () => {
     window.location.href = 'assets/html/casas.html'; // Cambia esta ruta a la ubicación de tu página de casas
 });
 
+//OJITO
+
+const passwordField = document.getElementById('loginPassword');
+const eyeIcon = document.getElementById('eye-icon');
+const eyeSlashIcon = document.getElementById('eye-slash-icon');
+
+eyeIcon.addEventListener('click', function() {
+    passwordField.type = 'text'; // Cambiar a texto para mostrar la contraseña
+    eyeIcon.style.display = 'none'; // Ocultar el ícono de ojo
+    eyeSlashIcon.style.display = 'inline'; // Mostrar el ícono de ojo tachado
+});
+
+eyeSlashIcon.addEventListener('click', function() {
+    passwordField.type = 'password'; // Cambiar a contraseña para ocultarla
+    eyeSlashIcon.style.display = 'none'; // Ocultar el ícono de ojo tachado
+    eyeIcon.style.display = 'inline'; // Mostrar el ícono de ojo
+});

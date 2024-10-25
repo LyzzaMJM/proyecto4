@@ -51,39 +51,57 @@ h1:hover{
 
 
 
-
+/*INSTRUCCION*/
 p {
-    font-size: 1.2rem;
-    color: #1D1314;
+    color: #ffffff; /* Texto blanco */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(173, 216, 230, 0.4); /* Efecto de brillo */
+    font-size: 1.5rem; /* Tamaño de texto */
+    margin-bottom: 2rem; /* Espacio inferior */
+    font-size: 30px;
 }
 
+.text-center {
+    text-align: center; /* Centra el texto */
+}
+
+
+/*PREGUNTA*/
 .pregunta {
-   
     border-radius: 12px;
     padding: 15px;
     margin-bottom: 20px;
-  
     text-align: center;
+    background-color: rgba(255, 95, 2, 0.171); /* Fondo suave con opacidad */
+    box-shadow: 0 0 20px rgba(223, 142, 75, 0.5); /* Sombra difusa para un efecto de profundidad */
 }
 
 .pregunta label {
     font-size: 1.5rem;
-    color: #704b34;
+    color: #ffffff; /* Texto blanco */
     font-weight: bold;
+    text-shadow: 0 0 8px rgba(209, 159, 97, 1), 0 0 16px ; /* Efecto de brillo */
+    display: block; /* Asegura que el label ocupe toda la línea */
+    margin-bottom: 10px; /* Espacio entre el label y los inputs */
 }
 
 .pregunta input[type="radio"] {
-    accent-color: #b85729;
+    accent-color: #b85729; /* Color del radio */
     margin-right: 10px;
-    transform: scale(1.3);
+    transform: scale(1.3); /* Escala para un mejor tamaño visual */
+    transition: transform 0.3s; /* Suaviza el efecto al interactuar */
+}
+
+.pregunta input[type="radio"]:hover {
+    transform: scale(1.4); /* Aumenta el tamaño al pasar el mouse */
 }
 
 .pregunta img {
-    border: 3px solid #b85729;
-    border-radius: 10px;
+    border: 3px solid #b85729; /* Borde colorido */
+    border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Asegura que la imagen no se desborde */
+    height: auto; /* Mantiene la proporción de la imagen */
 }
-
 
 
 
@@ -238,11 +256,7 @@ p {
 
 
 
-.radio-option input:checked + .card-body {
-    background-color: #ff9800; /* Un color de fondo más vibrante */
-    border: 4px solid #ffb347; /* Borde más grueso */
-    border-radius: 10px; /* Bordes redondeados */
-}
+
 
 .radio-option:hover {
     transform: scale(1.1); /* Aumentar el tamaño al pasar el mouse */
@@ -257,3 +271,4 @@ p {
     background-color: rgba(255, 223, 186, 0.5); /* Color de fondo al seleccionar */
     border: 1px solid #ff9800; /* Borde al seleccionar para mayor claridad */
 }
+
