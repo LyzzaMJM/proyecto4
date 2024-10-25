@@ -67,7 +67,7 @@ export function loginWithGoogle() {
     return signInWithPopup(auth, provider)
         .then((result) => {
             console.log("Inicio de sesión con Google exitoso. ¡Bienvenido!", result.user);
-            window.location.href = 'assets/html/principal.html';
+            window.location.href = 'assets/html/principal.html';//Cmbiar segun nombre de la carpeta del feed
             return result; // Retorna el resultado para que se maneje en script.js
         })
         .catch((error) => {
