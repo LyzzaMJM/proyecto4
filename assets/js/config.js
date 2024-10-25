@@ -10,13 +10,6 @@ const firebaseConfig = {
     messagingSenderId: "249035506580",
     appId: "1:249035506580:web:e43fa82c55fa9622940581",
     measurementId: "G-QTXSZZEDH5"
-    apiKey: "AIzaSyAjB7gwIhRn43H0_LFpJXk2HtXfheuD1Ak",
-    authDomain: "academy-a2996.firebaseapp.com",
-    projectId: "academy-a2996",
-    storageBucket: "academy-a2996.appspot.com",
-    messagingSenderId: "249035506580",
-    appId: "1:249035506580:web:e43fa82c55fa9622940581",
-    measurementId: "G-QTXSZZEDH5"
 };
 
 // Inicializa Firebase
@@ -54,7 +47,7 @@ export function loginUser(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log("Inicio de sesión exitoso. ¡Bienvenido!");
-            window.location.href = 'assets/html/casas.html';
+            window.location.href = 'assets/html/principal.html';
         })
         .catch((error) => {
             console.error("Error al iniciar sesión:", error.code, error.message);
@@ -67,7 +60,8 @@ export function loginWithGoogle() {
     return signInWithPopup(auth, provider)
         .then((result) => {
             console.log("Inicio de sesión con Google exitoso. ¡Bienvenido!", result.user);
-            window.location.href = 'assets/html/casas.html';
+            window.location.href = 'assets/html/principal.html';
+            return result; // Retorna el resultado para que se maneje en script.js
         })
         .catch((error) => {
             console.error("Error al iniciar sesión con Google:", error.code, error.message);
