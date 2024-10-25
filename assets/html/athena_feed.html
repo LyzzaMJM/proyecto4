@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athena</title>
+        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/feed.css">
+</head>
+<body>
+    
+
+  <!-- Portada -->
+  <div class="card mb-2">
+    <div>
+      <img src="../img/AthenaPortada.jpg" class="portImg" alt="ondo">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Athena</h5>
+      <p class="card-text">Somos los admis, literal</p>
+      <p class="card-text"><small class="text-body-secondary">Cualquier duda, escriban p</small></p>
+    </div>
+  </div>
+  <!-- Posts y Eventos -->
+  <div class="container mt-4">
+  <div class="row justify-content-center">
+    <!-- Columna de Posts -->
+    <div class="col-lg-6 mb-4">
+      <!-- Post del usuario -->
+      <div class="post-box mb-4 p-3 border">
+        <div class="d-flex mb-3">
+          <img src="https://via.placeholder.com/50" class="profile-pic me-3" alt="Profile Picture">
+          <form id="info-form" class="w-100" >
+            <textarea type="text" id="opinion" class="form-control" placeholder="Comparte dudas o opiniones"></textarea>
+            <div class="d-flex justify-content-end">
+              <button type="submit"  id="boton-post" class="btn btn-primary me-2">Publicar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Feed post -->
+      <div id="totalC" class="totalC">
+        <!-- Se mostrara los comentarios del usuario -->
+      </div>
+      
+    </div>
+
+    <!-- Columna de Eventos -->
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Eventos</h5>
+          <p class="card-text">No te pierdas los próximos eventos.</p>
+          <ul>
+            <li><strong>Conferencia de Tecnología</strong>: 25 de Octubre</li>
+            <li><strong>Hackathon</strong>: 3 de Noviembre</li>
+            <li><strong>Meetup</strong>: 12 de Noviembre</li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=2&ctz=America%2FLima&bgcolor=%239d6f6f&showTitle=0&showPrint=0&showCalendars=0&showTabs=0&showTz=0&mode=MONTH" style="border-width:0" width="360" height="300" frameborder="0" scrolling="no"></iframe>
+    </div> <!-- columna izq  -->
+    </div><!-- del row  -->
+  </div><!-- del container  -->
+
+  <!-- modal para editar el post -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="editForm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Editar post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="editDocId">
+            <div class="mb-3">
+              <textarea type="text" id="editComentario" class="form-control" required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button>
+            <button type="submit" class="btn btn-primary" aria-label="Guardar cambios">Guardar Cambios</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer id="footer" class="text py-4">
+    <div class="container text-center">
+        <p id="footer-p" class="mb-0">© 2024 Tu Empresa. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+   <!-- CDN Bootstrap js -->
+   <script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+   crossorigin="anonymous"></script>
+   <!-- CDN jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
+   
+  <!-- SCRIPT ../js/casas.js-->
+  <script type="module" src="../js/feed.js"></script>
+  <script type="module" src="../js/config.js"></script>
+</body>
+</html>
