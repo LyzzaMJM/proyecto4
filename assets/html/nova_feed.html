@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/athena.css">
+    <link rel="stylesheet" href="../css/feed.css">
 </head>
 <body>
     
@@ -16,7 +16,7 @@
   <!-- Portada -->
   <div class="card mb-2">
     <div>
-      <img src="../img/AthenaPortada.jpg" class="portImg" alt="...">
+      <img src="../img/AthenaPortada.jpg" class="portImg" alt="ondo">
     </div>
     <div class="card-body">
       <h5 class="card-title">Athena</h5>
@@ -33,12 +33,12 @@
       <div class="post-box mb-4 p-3 border">
         <div class="d-flex mb-3">
           <img src="https://via.placeholder.com/50" class="profile-pic me-3" alt="Profile Picture">
-          <form id="info-form">
-            <textarea id="opinion" class="form-control" placeholder="Comparte dudas o opiniones"></textarea>
+          <form id="info-form" class="w-100" >
+            <textarea type="text" id="opinion" class="form-control" placeholder="Comparte dudas o opiniones"></textarea>
+            <div class="d-flex justify-content-end">
+              <button type="submit"  id="boton-post" class="btn btn-primary me-2">Publicar</button>
+            </div>
           </form>
-           <div class="d-flex justify-content-end">
-            <button type="submit"  id="boton-post" class="btn btn-primary me-2">Publicar</button>
-          </div>
         </div>
       </div>
 
@@ -47,21 +47,6 @@
         <!-- Se mostrara los comentarios del usuario -->
       </div>
       
-      <!-- Post de los otros usuarios de la casa -->
-      <div class="feed mb-4 p-3 border">
-        <div class="d-flex mb-3">
-          <img src="https://via.placeholder.com/50" class="profile-pic me-3" alt="Profile Picture">
-          <div>
-            <h6 class="mb-1">Jane Smith</h6>
-            <small>20 de octubre del 2024</small>
-          </div>
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, urna eu tincidunt consectetur, nisi nunc aliquam ex, non dignissim felis arcu a felis.</p>
-        <div class="d-flex justify-content-between">
-          <button id="boton-like" class="btn btn-outline-primary">Like</button>
-          <button id="boton-comentario" class="btn btn-outline-primary">Comment</button>
-        </div>
-      </div>
     </div>
 
     <!-- Columna de Eventos -->
@@ -83,28 +68,46 @@
     </div><!-- del row  -->
   </div><!-- del container  -->
 
-
+  <!-- modal para editar el post -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="editForm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Editar post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="editDocId">
+            <div class="mb-3">
+              <textarea type="text" id="editComentario" class="form-control" required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button>
+            <button type="submit" class="btn btn-primary" aria-label="Guardar cambios">Guardar Cambios</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
   <footer id="footer" class="text py-4">
     <div class="container text-center">
         <p id="footer-p" class="mb-0">© 2024 Tu Empresa. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <!-- CDN Bootstrap js -->
-  <script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-  crossorigin="anonymous"></script>
-  <!-- CDN jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- CDN Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <!-- CDN Firebase Auth -->
-  <script  src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <!-- CDN Firebase database -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+   <!-- CDN Bootstrap js -->
+   <script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+   crossorigin="anonymous"></script>
+   <!-- CDN jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
    
   <!-- SCRIPT ../js/casas.js-->
-  <script type="module" src="../js/athena.js"></script>
+  <script type="module" src="../js/feed.js"></script>
+  <script type="module" src="../js/config.js"></script>
 </body>
 </html>
