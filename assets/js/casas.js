@@ -114,3 +114,7 @@ btnCancel.addEventListener('click', function () {
     // Ocultar el botón de "Cancelar"
     btnCancel.style.display = 'none';
 });
+
+
+
+
