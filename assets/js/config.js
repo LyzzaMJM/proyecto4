@@ -47,7 +47,7 @@ export function loginUser(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log("Inicio de sesión exitoso. ¡Bienvenido!");
-            window.location.href = 'assets/html/principal.html';//Cmbiar segun nombre de la carpeta del feed
+            window.location.href = 'assets/html/athena_feed.html';//Cmbiar segun nombre de la carpeta del feed
         })
         .catch((error) => {
             console.error("Error al iniciar sesión:", error.code, error.message);
@@ -60,7 +60,7 @@ export function loginWithGoogle() {
     return signInWithPopup(auth, provider)
         .then((result) => {
             console.log("Inicio de sesión con Google exitoso. ¡Bienvenido!", result.user);
-            window.location.href = 'assets/html/principal.html';//Cmbiar segun nombre de la carpeta del feed
+            window.location.href = 'assets/html/athena_feed.html';//Cambiar segun nombre de la carpeta del feed
             return result; // Retorna el resultado para que se maneje en script.js
         })
         .catch((error) => {
@@ -83,3 +83,36 @@ const testFirestore = async () => {
 
 // Llama a la función de prueba (puedes descomentarla si deseas ejecutar la prueba)
 testFirestore();
+
+//             FEEED 
+// Función para agregar una post
+export function agregarPost(comentario) {
+    console.log("guardado el post:", comentario);
+    //crea la coleccion en el firebase
+    return addDoc(collection(db, 'publicaciones'), {
+        comentario: comentario
+    });
+}
+  
+export function totalPost() {
+      console.log("publicaciones totales");
+      //muestra todos los post de la coleccion de publicaiones
+      return getDocs(collection(db, 'publicaciones'));
+}
+  
+export function obtenerPost(id) {
+      console.log("post buscado:", id);
+      return getDoc(doc(db, 'publicaciones', id));
+}
+  
+export function actualizado(id, newFields) {
+      console.log("actualizado:", id);
+      return updateDoc(doc(db, 'publicaciones', id), newFields);
+}
+  
+export function eliminar(id) {
+      console.log("eliminado:", id);
+      return deleteDoc(doc(db, "publicaciones", id));
+}
+  
+export { auth };
