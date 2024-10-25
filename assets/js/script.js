@@ -1,29 +1,56 @@
 import { registerUser, loginUser, loginWithGoogle } from "./config.js";
 
-// Mostrar formulario de registro al hacer clic
-document.getElementById('showRegisterForm').addEventListener('click', () => {
-    document.getElementById('loginForm').classList.add('d-none');
-    document.getElementById('registerForm').classList.remove('d-none');
+// MOVIMIENTO DE LOGIN A REGISTER
+const loginBtn = document.querySelector("#loginBtn");
+const registerBtn = document.querySelector("#registerBtn");
+const loginForm = document.querySelector("#loginForm");
+const registerForm = document.querySelector("#registerForm");
+const postRegisterSection = document.getElementById('postRegisterSection');
+// Selecciona los botones de Trivia y Casas
+const triviaBtn = document.getElementById('triviaBtn');
+const housesBtn = document.getElementById('housesBtn');
+
+// Cambiar entre formularios
+loginBtn.addEventListener('click', () => {
+    loginForm.style.left = "50%";
+    registerForm.style.left = "-50%";
+    registerForm.style.left = "-50%";
+
+    loginForm.style.opacity = 1;
+    registerForm.style.opacity = 0;
 });
 
-// Volver al formulario de inicio de sesión
-document.getElementById('backToLogin').addEventListener('click', () => {
-    document.getElementById('registerForm').classList.add('d-none');
-    document.getElementById('loginForm').classList.remove('d-none');
+registerBtn.addEventListener('click', () => {
+    loginForm.style.left = "150%";
+    registerForm.style.left = "50%";
+    registerForm.style.left = "50%";
+
+    loginForm.style.opacity = 0;
+    registerForm.style.opacity = 1;
 });
 
-// Manejar el envío del formulario de registro
-document.getElementById('register').addEventListener('submit', (event) => {
+// Envío formulario de registro
+document.querySelector('.register-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
+    const fullName = document.getElementById('registerUser').value;
 
-    if (email && password) {
-        registerUser(email, password)
+    console.log(email, password, fullName); 
+
+    if (email && password && fullName) {
+        registerUser(email, password, fullName)
             .then(() => {
-                document.getElementById('register').reset();
+                document.querySelector('.register-form').reset();
+                // Oculta el formulario de registro
+                registerForm.style.display = 'none';
+                // Muestra la nueva sección
+                postRegisterSection.style.display = 'block';
+                // Oculta los botones de iniciar sesión y registro
+                document.querySelector('.btn-box').style.display = 'none'; // Asegúrate de que esta clase esté correcta
             })
             .catch((error) => {
+                console.error(error); // Ver errores en la consola
                 alert(`Error: ${error.message}`);
             });
     } else {
@@ -31,16 +58,17 @@ document.getElementById('register').addEventListener('submit', (event) => {
     }
 });
 
-// Manejar el envío del formulario de inicio de sesión
-document.getElementById('login').addEventListener('submit', (event) => {
+// Envío formulario de inicio de sesión
+document.querySelector('.login-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
+
     if (email && password) {
         loginUser(email, password)
             .then(() => {
-                document.getElementById('login').reset();
+                document.querySelector('.login-form').reset();
             })
             .catch((error) => {
                 alert(`Error: ${error.message}`);
@@ -53,5 +81,37 @@ document.getElementById('login').addEventListener('submit', (event) => {
 // Iniciar sesión con Google
 document.getElementById('loginGoogleBtn').addEventListener('click', (event) => {
     event.preventDefault();
-    loginWithGoogle();
+    loginWithGoogle()
+        .then((result) => {
+            const user = result.user; // Obtén el usuario
+            const email = user.email;
+
+            // Lógica para registrar el usuario con nombre de usuario y correo
+            if (email) {
+                // Aquí podrías llamar a una función para registrar el usuario en Firestore, por ejemplo
+                registerUser(email, "someDefaultPassword", user.displayName) // Asegúrate de manejar la contraseña
+                    .then(() => {
+                        alert("Registro exitoso!");
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        alert(`Error al registrar: ${error.message}`);
+                    });
+            } 
+        })
+        .catch((error) => {
+            console.error(error);
+            alert(`Error al iniciar sesión con Google: ${error.message}`);
+        });
 });
+
+// Evento para el botón de Trivia
+triviaBtn.addEventListener('click', () => {
+    window.location.href = 'assets/html/trivia.html'; // Cambia esta ruta a la ubicación de tu página de trivia
+});
+
+// Evento para el botón de Casas
+housesBtn.addEventListener('click', () => {
+    window.location.href = 'assets/html/casas.html'; // Cambia esta ruta a la ubicación de tu página de casas
+});
+
