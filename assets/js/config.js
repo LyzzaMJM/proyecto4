@@ -47,7 +47,7 @@ export function loginUser(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log("Inicio de sesión exitoso. ¡Bienvenido!");
-            window.location.href = 'assets/html/principal.html';
+            window.location.href = 'assets/html/principal.html';//Cmbiar segun nombre de la carpeta del feed
         })
         .catch((error) => {
             console.error("Error al iniciar sesión:", error.code, error.message);
@@ -60,7 +60,11 @@ export function loginWithGoogle() {
     return signInWithPopup(auth, provider)
         .then((result) => {
             console.log("Inicio de sesión con Google exitoso. ¡Bienvenido!", result.user);
+<<<<<<< HEAD
             window.location.href = 'assets/html/principal.html';
+=======
+            window.location.href = 'assets/html/principal.html';//Cmbiar segun nombre de la carpeta del feed
+>>>>>>> a1bd57512bdc6ded84a789806bff3ff9f16c0333
             return result; // Retorna el resultado para que se maneje en script.js
         })
         .catch((error) => {
