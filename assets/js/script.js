@@ -1,35 +1,30 @@
 import { registerUser, loginUser, loginWithGoogle } from "./config.js";
 
 // MOVIMIENTO DE LOGIN A REGISTER
-const loginBtn = document.querySelector("#login");
-const registerBtn = document.querySelector("#register");
-const loginForm = document.querySelector(".login-form");
-const registerForm = document.querySelector(".register-form");
+const loginBtn = document.querySelector("#loginBtn");
+const registerBtn = document.querySelector("#registerBtn");
+const loginForm = document.querySelector("#loginForm");
+const registerForm = document.querySelector("#registerForm");
+const postRegisterSection = document.getElementById('postRegisterSection');
+// Selecciona los botones de Trivia y Casas
+const triviaBtn = document.getElementById('triviaBtn');
+const housesBtn = document.getElementById('housesBtn');
 
+// Cambiar entre formularios
 loginBtn.addEventListener('click', () => {
-    loginBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
-    registerBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
-
     loginForm.style.left = "50%";
     registerForm.style.left = "-50%";
 
     loginForm.style.opacity = 1;
     registerForm.style.opacity = 0;
-
-    document.querySelector(".col-1").style.borderRadius = "0 30% 20% 0";
 });
 
 registerBtn.addEventListener('click', () => {
-    loginBtn.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
-    registerBtn.style.backgroundColor = "rgba(33, 38, 77, 1)"; // Corregido
-
     loginForm.style.left = "150%";
     registerForm.style.left = "50%";
 
     loginForm.style.opacity = 0;
     registerForm.style.opacity = 1;
-
-    document.querySelector(".col-1").style.borderRadius = "0 20% 30% 0";
 });
 
 // Envío formulario de registro
@@ -37,14 +32,23 @@ document.querySelector('.register-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
-    const user = document.getElementById('registerUser').value; // Añadido
+    const fullName = document.getElementById('registerUser').value;
 
-    if (email && password && user) {
-        registerUser(email, password, user)
+    console.log(email, password, fullName); 
+
+    if (email && password && fullName) {
+        registerUser(email, password, fullName)
             .then(() => {
                 document.querySelector('.register-form').reset();
+                // Oculta el formulario de registro
+                registerForm.style.display = 'none';
+                // Muestra la nueva sección
+                postRegisterSection.style.display = 'block';
+                // Oculta los botones de iniciar sesión y registro
+                document.querySelector('.btn-box').style.display = 'none'; // Asegúrate de que esta clase esté correcta
             })
             .catch((error) => {
+                console.error(error); // Ver errores en la consola
                 alert(`Error: ${error.message}`);
             });
     } else {
@@ -57,6 +61,7 @@ document.querySelector('.login-form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
+
 
     if (email && password) {
         loginUser(email, password)
@@ -74,5 +79,36 @@ document.querySelector('.login-form').addEventListener('submit', (event) => {
 // Iniciar sesión con Google
 document.getElementById('loginGoogleBtn').addEventListener('click', (event) => {
     event.preventDefault();
-    loginWithGoogle(); 
+    loginWithGoogle()
+        .then((result) => {
+            const user = result.user; // Obtén el usuario
+            const email = user.email;
+
+            // Lógica para registrar el usuario con nombre de usuario y correo
+            if (email) {
+                // Aquí podrías llamar a una función para registrar el usuario en Firestore, por ejemplo
+                registerUser(email, "someDefaultPassword", user.displayName) // Asegúrate de manejar la contraseña
+                    .then(() => {
+                        alert("Registro exitoso!");
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        alert(`Error al registrar: ${error.message}`);
+                    });
+            } 
+        })
+        .catch((error) => {
+            console.error(error);
+            alert(`Error al iniciar sesión con Google: ${error.message}`);
+        });
+});
+
+// Evento para el botón de Trivia
+triviaBtn.addEventListener('click', () => {
+    window.location.href = 'assets/html/trivia.html'; // Cambia esta ruta a la ubicación de tu página de trivia
+});
+
+// Evento para el botón de Casas
+housesBtn.addEventListener('click', () => {
+    window.location.href = 'assets/html/casas.html'; // Cambia esta ruta a la ubicación de tu página de casas
 });

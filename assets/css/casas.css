@@ -1,16 +1,290 @@
+/* Estilo adicional para el fondo de la página */
+body {
+    background-image: url('/assets/img/fondos/puertafantasia.jpg'); /* Cambia 'ruta/de/tu/imagen.jpg' por la ruta de tu imagen */
+    background-size: cover; /* La imagen cubrirá todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-attachment: fixed; /* Hace que la imagen se mantenga fija al hacer scroll */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    color: #4B3B2F; /* Marrón oscuro para el texto principal */
+}
+
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(71, 52, 27, 0.466); /* Un overlay blanco semitransparente para suavizar la imagen */
+    pointer-events: none; /* Permite interactuar con el contenido normalmente */
+}
+
+
 /* Estilo general para las cards */
 .carousel-item {
     transition: transform 0.2s ease-in-out;
     position: relative;
 }
 
+
+/* TITULO */
+h1.display-4 {
+    font-size: 3rem; /* Tamaño grande para el título */
+    font-weight: bold; /* Negrita para resaltar */
+    color: #ffffff; /* Color blanco para el texto */
+    text-shadow: 
+        0 0 15px rgba(255, 196, 0, 0.9), /* Brillo más fuerte */
+        0 0 30px rgba(255, 196, 0, 0.7), /* Más brillo */
+        0 0 45px rgba(255, 196, 0, 0.5); /* Aún más brillo */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    transition: transform 0.4s ease, text-shadow 0.4s ease; /* Transiciones suaves para el efecto hover */
+    position: relative;
+    z-index: 2;
+}
+
+h1.display-4:hover {
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+    text-shadow: 
+        0 0 25px rgba(255, 196, 0, 1), /* Brillo intenso */
+        0 0 50px rgba(255, 196, 0, 0.8), /* Más brillo intenso */
+        0 0 75px rgba(255, 196, 0, 0.6); /* Aún más brillo intenso */
+}
+
+
+
+
+
+/*CARDS*/
 /* Centrado de las cards con tamaño reducido */
 .card {
-    margin: 0 auto;
-    max-width: 400px; /* Tamaño reducido de las cards */
-    height: auto; /* Para mantener la proporción de las cards */
+    margin: 0 auto; /* Centra la card */
+    max-width: 300px; /* Tamaño reducido de las cards */
+    height: auto; /* Mantiene la proporción de las cards */
     overflow: hidden; /* Asegura que el contenido no se salga del card */
+    background-color: #4B3B2F; /* Marrón oscuro suave para el fondo */
+    border-radius: 15px; /* Bordes redondeados para suavizar el diseño */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Efecto de sombra */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.card:hover {
+    transform: scale(1.05); /* Efecto de ampliación al hacer hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+}
+
+
+/* Cambia el color de fondo y el texto de las cards */
+.card {
+    background-color: #644d40(0, 0, 0, 0.7); /* Fondo semitransparente */
+    color: white; /* Color de texto dentro de la card */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px #644d40(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+}
+
+/* Cambia el color del encabezado de las cards */
+.card-header {
+    background-color: #dbd7c9;
+    color: #644d40;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+
+/* Cambiar el color del texto dentro de la card 1 - CIENCIAS DE LA EMPRESA*/
+/* Estilos para la Casa 1: Athena */
+#header-titulo-a {
+    background-color: #d4d1d1; /* Fondo naranja suave */
+    color: #532c0c; /* Texto blanco */
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+#carrusel-a .card {
+    background-color: #f7883e(231, 126, 34, 0.85); /* Fondo naranja semitransparente */
+    color: #ffffff; /* Texto blanco */
+    border: none; /* Eliminar bordes */
+}
+
+#carrusel-a .card-body {
+    background-color: #532c0c(39, 174, 96, 0.8); /* Color verde suave para el cuerpo de la card */
+}
+
+#carrusel-a .card-title {
+    color: #f7883e; /* Título con color oscuro */
+}
+
+#carrusel-a .card-text ul li {
+    color: #f7883e; /* Color oscuro para los elementos de la lista */
+}
+
+/* Estilos para el botón */
+#carrusel-a .btn {
+    background-color: #f7883e; /* Azul para el botón */
+    color: #fff; /* Texto blanco */
+    border-radius: 20px; /* Bordes más redondeados */
+}
+
+#carrusel-a .btn:hover {
+    background-color: #767d9b; /* Azul más oscuro al pasar el mouse */
+}
+
+
+
+
+/* Cambiar el color del texto dentro de la card 2 - HUMANIDADES*/
+/* Estilos para la Casa 2: Luminaria */
+#header-titulo-b {
+    background-color: #190F23; /* Fondo dorado brillante */
+    color: #ffffff; /* Color del texto oscuro para contraste */
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+#carrusel-b .card {
+    background-color: #d19f61(255, 204, 0, 0.85); /* Fondo semitransparente dorado */
+    color: #ffffff; /* Color del texto blanco */
+    border: none; /* Eliminar bordes */
+}
+
+#carrusel-b .card-body {
+    background-color: #3C5B62; /* Color más suave para el cuerpo de la card */
+}
+
+#carrusel-b .card-title {
+    color: #8ABAAB; /* Título con color oscuro */
+}
+
+#carrusel-b .card-text ul li {
+    color: #d4bc9e; /* Color oscuro para los elementos de la lista */
+}
+
+/* Estilos para el botón */
+#carrusel-b .btn {
+    background-color: #8ABAAB; /* Naranja para el botón */
+    color: #fff; /* Texto blanco */
+    border-radius: 20px; /* Bordes más redondeados para un efecto fantasioso */
+}
+
+#carrusel-b .btn:hover {
+    background-color: #EA7028; /* Naranja más oscuro al pasar el mouse */
+}
+
+
+
+
+
+
+
+
+
+/* Cambiar el color del texto dentro de la card 3 - INGENIERIAS*/
+
+
+#header-titulo-c {
+    background-color: #ffffff; /* Fondo púrpura suave */
+    color: #F37614; /* Color blanco para el texto */
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+#carrusel-c .card {
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo púrpura semitransparente */
+    color: #ffffff; /* Color del texto blanco */
+    border: none; /* Eliminar bordes */
+}
+
+#carrusel-c .card-body {
+    background-color: #F37614; /* Color verde suave para el cuerpo de la card */
+}
+
+#carrusel-c .card-title {
+    color: #1D1314; /* Título con color oscuro */
+}
+
+#carrusel-c .card-text ul li {
+    color: #F37614; /* Color oscuro para los elementos de la lista */
+}
+
+/* Estilos para el botón */
+#carrusel-c .btn {
+    background-color: #E7E2D8; /* Azul para el botón */
+    color: #1D1314; /* Texto blanco */
+    border-radius: 20px; /* Bordes más redondeados para un efecto amigable */
+}
+
+#carrusel-c .btn:hover {
+    background-color: #1D1314; /* Azul más oscuro al pasar el mouse */
+    color: #E7E2D8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Cambiar el color del texto dentro de la card 4 - MEDICINA*/
+
+/* Estilos para la Casa 4: Salus */
+#header-titulo-d {
+    background-color: #E3CFAF; /* Fondo rojo suave */
+    color: #7F8295; /* Texto blanco */
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+#carrusel-d .card {
+    background-color: #E3CFAF; /* Fondo rojo semitransparente */
+    color: #ffffff; /* Texto blanco */
+    border: none; /* Eliminar bordes */
+}
+
+#carrusel-d .card-body {
+    background-color: #7F8295; /* Color verde suave para el cuerpo de la card */
+}
+
+#carrusel-d .card-title {
+    color: #2c3e50; /* Título con color oscuro */
+}
+
+#carrusel-d .card-text ul li {
+    color: #2c3e50; /* Color oscuro para los elementos de la lista */
+}
+
+/* Estilos para el botón */
+#carrusel-d .btn {
+    background-color: #E3CFAF; /* Azul para el botón */
+    color: #fff; /* Texto blanco */
+    border-radius: 20px; /* Bordes más redondeados */
+}
+
+#carrusel-d .btn:hover {
+    background-color: #975831; /* Azul más oscuro al pasar el mouse */
+}
+
+
+
+
+
+
+
+
+
 
 /* Sombra de la siguiente card */
 .carousel-item-next,
@@ -37,42 +311,158 @@
 /* Ajustes para las flechas */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(75, 59, 47, 0.7); /* Marrón translúcido para las flechas */
     border-radius: 50%;
     padding: 10px;
 }
 
-/* Estilo para los títulos */
-.card-header {
-    font-size: 1.3rem; /* Tamaño reducido del título */
-    font-weight: bold;
-}
 
-/* Botón 'Unirme' */
+
+/* Estilo para el botón 'Unirme' */
 .btn {
-    margin-top: 1rem;
+    margin-top: 1rem; /* Espacio antes del botón */
     font-size: 0.9rem; /* Tamaño reducido del texto del botón */
     padding: 8px 12px; /* Ajuste del tamaño del botón */
-}
-
-/* Hover efecto para el botón */
-.btn:hover {
-    background-color: #ddd;
-    color: #000;
+    background-color: #d4bc9e; /* Naranja suave para el botón */
+    color: #fff;
+    border-radius: 8px;
+    border: none;
     transition: background-color 0.3s ease;
 }
 
-
-
-/*FOOTER*/
-#footer {
-    margin-top: 20px; 
-    min-height: 60px; /* Aumentar la altura del pie de página */
-    background-color: #AFD06E;
-    color: white;
+.btn:hover {
+    background-color: #FFE082; /* Naranja claro al hacer hover */
+    color: #4B3B2F; /* Marrón oscuro para el texto */
 }
-  
+
+/* Espacio ligero antes del botón de salida */
+#button-salida {
+    margin-top: 1rem; /* Espacio ligero antes del botón de salida */
+}
+
+
+
+/* FOOTER */
+#footer {
+    margin-top: 10px; 
+    min-height: 30px; /* Aumentar la altura mínima del pie de página, pero no mucho */
+    background-color: #5e3a0d; /* Un marrón más oscuro para el fondo */
+    color: #ffffff; /* Color del texto en blanco */
+    text-shadow: 1px 1px 5px rgba(255, 196, 0, 0.5); /* Sombra suave para dar profundidad */
+    position: relative; /* Asegura que los elementos internos se posicionen correctamente */
+    overflow: hidden; /* Asegura que no haya desbordamiento */
+}
+
 #footer-p {
     text-align: center;
-  
+    margin-bottom: 0; /* Eliminar margen inferior */
+    padding: 2px 0; /* Espacio reducido alrededor del texto */
+}
+
+/* Efecto de brillo en el footer */
+#footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 215, 0, 0.3); /* Un brillo dorado suave */
+    animation: shimmer 2s infinite; /* Animación de brillo */
+}
+
+@keyframes shimmer {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+
+
+/* Sparkle effect (opcional, para añadir un toque mágico) */
+@keyframes sparkle {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #FFECB3; /* Luz mágica suave */
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    animation: sparkle 1.5s infinite;
+    pointer-events: none;
+}
+
+
+/* Estilo para las cards en pantallas más pequeñas */
+@media (max-width: 768px) {
+    .card {
+        max-width: 90%; /* Permite que la card ocupe el 90% en pantallas pequeñas */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*MODAL*/
+.modal-content {
+    background-color: #5e3a0d; /* Fondo del modal */
+    color: #ffffff; /* Color del texto */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 
+                0 0 20px rgba(255, 215, 0, 0.5); /* Sombra intensa */
+    position: relative; /* Para el efecto de brillo */
+    overflow: hidden; /* Ocultar el brillo que sobresale */
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 196, 0, 0.5); /* Línea debajo del header */
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 196, 0, 0.1)); /* Degradado suave */
+    padding: 15px; /* Espaciado interno */
+    border-radius: 15px 15px 0 0; /* Bordes redondeados en la parte superior */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para el header */
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255, 196, 0, 0.5); /* Línea encima del footer */
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 196, 0, 0.1)); /* Degradado suave */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 0 0 15px 15px; /* Bordes redondeados en la parte inferior */
+}
+
+/* Efecto de brillo en el modal */
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2), transparent 60%); /* Brillo suave */
+    animation: sparkle 2s infinite; /* Animación de brillo */
+    opacity: 0.5; /* Opacidad del brillo */
+    pointer-events: none; /* Ignorar eventos de puntero */
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Efecto de tamaño más pequeño */
+.modal-dialog {
+    max-width: 300px; /* Ancho máximo del modal */
 }

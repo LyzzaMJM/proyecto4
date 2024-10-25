@@ -1,32 +1,46 @@
-// Evento para el botón de "Salir"
-document.getElementById('logout-button').addEventListener('click', function() {
-    // Aquí puedes agregar la funcionalidad que necesites al hacer clic en "Salir"
-    alert('Has cerrado sesión');
-    // Redireccionar a una página de inicio de sesión, por ejemplo:
-    window.location.href = '/index.html';
-});
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+import { updateHouseSelection } from "./casas-config.js"; // Asegúrate de que la ruta es correcta
 
-// Controlar el carrusel usando los botones prev y next manualmente
-document.getElementById('prevBtn').addEventListener('click', function() {
-    $('#houseCarousel').carousel('prev');
-});
+const auth = getAuth();
 
-document.getElementById('nextBtn').addEventListener('click', function() {
-    $('#houseCarousel').carousel('next');
-});
-
-// Cambiar el color del texto del footer al hacer clic
-document.getElementById('footer-p').addEventListener('click', function() {
-    this.style.color = this.style.color === 'red' ? 'black' : 'red';
-});
-
-// Evento de clic en los botones "Unirme" de cada casa
-const botonesUnirme = document.querySelectorAll('.btn-light');
-botonesUnirme.forEach((boton, index) => {
-    boton.addEventListener('click', function() {
-        const casaSeleccionada = document.querySelector(`#carrusel-${String.fromCharCode(97 + index)} .card-header`).innerText;
-        alert(`Te has unido a la ${casaSeleccionada}`);
-    
+// Manejo del botón de Logout
+const logoutButton = document.getElementById('logout-button');
+if (logoutButton) {
+    logoutButton.addEventListener('click', () => {
+        signOut(auth).then(() => {
+            // Redirigir al login después de cerrar sesión
+            window.location.href = '/index.html';
+        }).catch((error) => {
+            console.error('Error al cerrar sesión:', error);
+        });
     });
-});
+}
 
+// Asegurarse de que el usuario está autenticado
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // Si el usuario está autenticado, manejamos la selección de la casa
+        document.querySelectorAll('.btn').forEach((button) => {
+            button.addEventListener('click', async (event) => {
+                event.preventDefault();  // Evitar que se recargue la página
+
+                // Obtener la tarjeta y el nombre de la casa seleccionada
+                const houseElement = event.target.closest('.card');
+                const houseName = houseElement.querySelector('.card-header').innerText.trim();
+
+                // Actualizar la selección de la casa en Firestore
+                try {
+                    await updateHouseSelection(houseName);
+                    // Redirigir a la página de feed con la casa seleccionada en la URL
+                    window.location.href = `/assets/html/inicio.html?house=${houseName.toLowerCase()}`;
+                } catch (error) {
+                    console.error("Error al actualizar la casa:", error);
+                }
+            });
+        });
+
+    } else {
+        // Si no está autenticado, redirigir al login
+        window.location.href = "/index.html";
+    }
+});
