@@ -5,7 +5,6 @@ html, body {
   padding: 0;
 }
 
-
 :root {
   --blue: #AFD06E;
   --white: #fff;
@@ -21,32 +20,32 @@ html, body {
 
 /* =============== Navigation ================ */
 .navigation {
-  position: fixed;
+  position: fixed; /* Mantener la barra fija */
   left: 0; /* Asegura que la navegación esté pegada al lado izquierdo */
-  width: 300px;
+  width: 300px; /* Ancho inicial de la barra */
   height: 100%;
   background: var(--blue);
   border-left: 0; /* Elimina el borde si no es necesario */
-  transition: 0.5s;
+  transition: width 0.5s ease; /* Transición suave al cambiar el ancho */
   overflow: hidden;
   z-index: 999; /* Asegura que esté siempre en el frente */
 }
 
-
 /* Ajustes para cuando la barra de navegación está activa */
 .navigation.active {
-  width: 80px;
+  width: 80px; /* Ancho reducido cuando está activa */
 }
 
-/* Ajuste dinámico del margen izquierdo del contenido principal */
+/* Ajuste dinámico del contenido principal, manteniéndolo alineado al lado derecho */
 .main {
   margin-left: 300px; /* Este valor coincide con el ancho de la barra de navegación */
-  transition: margin-left 0.5s; /* Transición suave al cambiar el margen */
+  transition: margin-left 0.5s ease; /* Transición suave al cambiar el margen */
 }
 
-/* Cuando la barra de navegación está activa (estrecha) */
-.navigation.active ~ .main {
-  margin-left: 80px; /* Ajustar margen cuando la barra lateral esté contraída */
+/* Estilo para el contenido principal */
+.content {
+  position: relative; /* Asegúrate de que el contenido esté por debajo */
+  z-index: 1; /* Asegura que el contenido esté debajo de la barra de navegación */
 }
 
 .navigation ul {
@@ -138,78 +137,40 @@ html, body {
   pointer-events: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Main */
-
-/* Estilos para la sección Main y Topbar */
-.main {
-  background-color: #f1f1f1;
-  
-}
-
-.topbar {
+/* Estilos para el botón de hamburguesa */
+.hamburger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 30px;
+  height: 30px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
-
-  margin-bottom: 20px;
-  color: white;
-}
-
-/* Estilos para el ícono de menú */
-.topbar .toggle ion-icon {
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: white;
-}
-
-/* Estilos para la barra de búsqueda */
-.topbar .search {
-  flex-grow: 1;
-  margin-left: 20px;
-  position: relative;
-}
-
-.topbar .search input {
-  width: 100%;
-  max-width: 300px;
-  padding: 8px 40px 8px 10px;
+  background: none;
   border: none;
-  border-radius: 20px;
-  outline: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.topbar .search ion-icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #333;
-  font-size: 1.2rem;
-}
-
-/* Estilos para el usuario */
-.topbar .user img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
   cursor: pointer;
+  z-index: 1000; /* Asegúrate de que esté encima */
 }
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--white);
+  transition: 0.3s;
+}
+
+/* Cambios en el botón al activar la barra de navegación */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+

@@ -10,52 +10,105 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/assets/css/profile.css">
 </head>
 
 <body>
-  <!-- =============== Navegación Personalizada ================ -->
+
+
+    <!-- =============== Navegación Personalizada ================ -->
+  <!-- Botón de alternancia con estilo de hamburguesa -->
+  <button id="toggle-nav" class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Navegación Personalizada -->
+  <div class="navigation">
+    <ul>
+      <li>
+        <a>
+          <span class="icon">
+            <ion-icon name="logo-apple"></ion-icon>
+          </span>
+          <span class="title">EduConections</span>
+        </a>
+      </li>
+      <li>
+        <a href="feed.html">
+          <span class="icon">
+            <ion-icon name="home-outline"></ion-icon>
+          </span>
+          <span class="title">Feed</span>
+        </a>
+      </li>
+      <li>
+        <a href="about-us.html">
+          <span class="icon">
+            <ion-icon name="help-outline"></ion-icon>
+          </span>
+          <span class="title">About us</span>
+        </a>
+      </li>
+
+
+
+       <!-- Contenedor de botones -->
+
+       <li>
+        <h3 class="question"></h3>
+       </li>
+
+      <li>
+    
+        <a href="trivia.html">
+
+          <span class="icon">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </span>
+          
+          <span class="title">Trivia</span>
+        </a>
+
+      </li>
+      <li>
+    
+        <a href="casas.html">
+
+          <span class="icon">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </span>
+          <span class="title">Casas</span>
+        </a>
+
+      </li>
     
 
-  <div class="container">
-    <div class="navigation">
-      <ul>
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="logo-apple"></ion-icon>
-            </span>
-            <span class="title">EduConections</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="home-outline"></ion-icon>
-            </span>
-            <span class="title">Feed</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="help-outline"></ion-icon>
-            </span>
-            <span class="title">About us</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="log-out-outline"></ion-icon>
-            </span>
-            <span class="title">Sign Out</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+
+      <li class="salir">
+        <a href="#">
+          <span class="icon">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </span>
+          <span class="title">Sign Out</span>
+        </a>
+      </li>
+   
+    
+  </ul>
   </div>
-  
+
+
+
+<!-- Contenido Principal -->
+<div class="main">
+  <div class="content">
+    <!-- Aquí va el contenido principal de tu aplicación -->
+  </div>
+</div>
+
+
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
@@ -111,7 +164,11 @@
                           </div>
                           <button id="editarPerfil" class="btn btn-warning mt-2">Editar perfil</button>
                       </div>
+
+                      
                   </div>
+
+
                   <!-- Columna derecha: Posts -->
                   <div class="col-md-7">
                       <div class="d-flex justify-content-around mb-4">
@@ -169,6 +226,17 @@
                                   <label for="usuarioPerfilInput" class="form-label">Usuario</label>
                                   <input type="text" class="form-control" id="usuarioPerfilInput" value="#">
                               </div>
+                              <div>
+                                <!-- Imagen actual de perfil -->
+                                <img src="recursos/hands.jpeg" alt="Foto de perfil" class="rounded-circle mb-3" id="fotoPerfilModal" width="200" height="200">
+                                
+                                <!-- Botón para cambiar la foto de perfil -->
+                                <button class="btn btn-sm btn-secondary" id="cambiarFotoBtn">Seleccionar nueva foto</button>
+                                
+                                <!-- Input para seleccionar la nueva foto de perfil -->
+                                <input type="file" id="inputFotoPerfil" accept="image/*" style="display:none;">
+                            </div>
+                            
                           </form>
                       </div>
                       <div class="modal-footer">
@@ -181,13 +249,13 @@
   </div>
 
     <!-- APP -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script> -->
+   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script> 
 
   <!-- FIREBASE - AUTENTICACION -->
-  <!--<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script> 
 
   <!-- CDN Firebase database -->
-  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> -->
+ <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> 
 
    
 
@@ -197,6 +265,6 @@
   <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-  <script src="/js/profile.js"></script>
-</body>
+  <script src="/assets/js/profile.js"></script>
+ 
 </html>

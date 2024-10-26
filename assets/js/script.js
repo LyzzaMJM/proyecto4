@@ -5,15 +5,12 @@ const loginBtn = document.querySelector("#loginBtn");
 const registerBtn = document.querySelector("#registerBtn");
 const loginForm = document.querySelector("#loginForm");
 const registerForm = document.querySelector("#registerForm");
-const postRegisterSection = document.getElementById('postRegisterSection');
-// Selecciona los botones de Trivia y Casas
-const triviaBtn = document.getElementById('triviaBtn');
-const housesBtn = document.getElementById('housesBtn');
+
+
 
 // Cambiar entre formularios
 loginBtn.addEventListener('click', () => {
     loginForm.style.left = "50%";
-    registerForm.style.left = "-50%";
     registerForm.style.left = "-50%";
 
     loginForm.style.opacity = 1;
@@ -22,7 +19,6 @@ loginBtn.addEventListener('click', () => {
 
 registerBtn.addEventListener('click', () => {
     loginForm.style.left = "150%";
-    registerForm.style.left = "50%";
     registerForm.style.left = "50%";
 
     loginForm.style.opacity = 0;
@@ -42,12 +38,8 @@ document.querySelector('.register-form').addEventListener('submit', (event) => {
         registerUser(email, password, fullName)
             .then(() => {
                 document.querySelector('.register-form').reset();
-                // Oculta el formulario de registro
-                registerForm.style.display = 'none';
-                // Muestra la nueva sección
-                postRegisterSection.style.display = 'block';
-                // Oculta los botones de iniciar sesión y registro
-                document.querySelector('.btn-box').style.display = 'none'; // Asegúrate de que esta clase esté correcta
+                console.log("Inicio de sesión exitoso. ¡Bienvenido!");
+                window.location.href = '/assets/html/feed.html';//Cmbiar segun nombre de la carpeta del feed
             })
             .catch((error) => {
                 console.error(error); // Ver errores en la consola
@@ -105,30 +97,44 @@ document.getElementById('loginGoogleBtn').addEventListener('click', (event) => {
         });
 });
 
-// Evento para el botón de Trivia
-triviaBtn.addEventListener('click', () => {
-    window.location.href = 'assets/html/trivia.html'; // Cambia esta ruta a la ubicación de tu página de trivia
-});
 
-// Evento para el botón de Casas
-housesBtn.addEventListener('click', () => {
-    window.location.href = 'assets/html/casas.html'; // Cambia esta ruta a la ubicación de tu página de casas
-});
 
-//OJITO
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener elementos del DOM
+    const passwordField = document.getElementById('loginPassword');
+    const registerPasswordField = document.getElementById('registerPassword');
 
-const passwordField = document.getElementById('loginPassword');
-const eyeIcon = document.getElementById('eye-icon');
-const eyeSlashIcon = document.getElementById('eye-slash-icon');
+    const eyeIcon = document.getElementById('eye-icon');
+    const eyeSlashIcon = document.getElementById('eye-slash-icon');
 
-eyeIcon.addEventListener('click', function() {
-    passwordField.type = 'text'; // Cambiar a texto para mostrar la contraseña
-    eyeIcon.style.display = 'none'; // Ocultar el ícono de ojo
-    eyeSlashIcon.style.display = 'inline'; // Mostrar el ícono de ojo tachado
-});
+    const eyeIcon2 = document.getElementById('eye-icon-2');
+    const eyeSlashIcon2 = document.getElementById('eye-slash-icon-2');
 
-eyeSlashIcon.addEventListener('click', function() {
-    passwordField.type = 'password'; // Cambiar a contraseña para ocultarla
-    eyeSlashIcon.style.display = 'none'; // Ocultar el ícono de ojo tachado
-    eyeIcon.style.display = 'inline'; // Mostrar el ícono de ojo
+    // Mostrar contraseña para el campo de inicio de sesión
+    eyeIcon.addEventListener('click', function() {
+        passwordField.type = 'text'; // Cambiar a texto para mostrar la contraseña
+        eyeIcon.style.display = 'none'; // Ocultar el ícono de ojo
+        eyeSlashIcon.style.display = 'inline'; // Mostrar el ícono de ojo tachado
+    });
+
+    // Ocultar contraseña para el campo de inicio de sesión
+    eyeSlashIcon.addEventListener('click', function() {
+        passwordField.type = 'password'; // Cambiar a contraseña para ocultarla
+        eyeSlashIcon.style.display = 'none'; // Ocultar el ícono de ojo tachado
+        eyeIcon.style.display = 'inline'; // Mostrar el ícono de ojo
+    });
+
+    // Mostrar contraseña para el campo de registro
+    eyeIcon2.addEventListener('click', function() {
+        registerPasswordField.type = 'text'; // Cambiar a texto para mostrar la contraseña
+        eyeIcon2.style.display = 'none'; // Ocultar el ícono de ojo
+        eyeSlashIcon2.style.display = 'inline'; // Mostrar el ícono de ojo tachado
+    });
+
+    // Ocultar contraseña para el campo de registro
+    eyeSlashIcon2.addEventListener('click', function() {
+        registerPasswordField.type = 'password'; // Cambiar a contraseña para ocultarla
+        eyeSlashIcon2.style.display = 'none'; // Ocultar el ícono de ojo tachado
+        eyeIcon2.style.display = 'inline'; // Mostrar el ícono de ojo
+    });
 });
