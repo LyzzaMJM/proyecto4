@@ -38,8 +38,20 @@ $(document).ready(function () {
         // Determinar la casa con mayor puntuación
         let assignedHouse = Object.keys(houseScores).reduce((a, b) => houseScores[a] > houseScores[b] ? a : b);
 
+        // Guardar la casa asignada en localStorage
+        localStorage.setItem("casaAsignada", assignedHouse);
+
         // Mostrar la casa asignada con la primera letra en mayúscula
         $("#casaResultado").text(assignedHouse.charAt(0).toUpperCase() + assignedHouse.slice(1));
+
+        // Mostrar la imagen de la casa asignada
+        mostrarResultado(assignedHouse);
+    }
+
+    // Función para mostrar el resultado de la casa y su imagen
+    function mostrarResultado(casa) {
+        document.getElementById('imagenCasa').src = casas[casa.charAt(0).toUpperCase() + casa.slice(1)]; // Asignar la imagen de la casa
+        document.getElementById('resultadoFinal').style.display = 'block'; // Mostrar el mensaje final
     }
 
     // Evento de clic para el botón "Siguiente"
@@ -57,28 +69,32 @@ $(document).ready(function () {
 
     // Evento para el botón "Ir a mi feed"
     $("#goToFeedBtn").click(function () {
-        const assignedHouse = $("#casaResultado").text().toLowerCase(); // Obtener la casa asignada
-
-        // Redirigir al feed único
-        window.location.href = `feed.html?house=${encodeURIComponent(assignedHouse)}`;
+        // Redirigir al feed o página principal
+        window.location.href = `feed.html`;
     });
 
-    $(document).ready(function() {
-        // Selecciona todas las opciones de radio y añade un evento de cambio
-        $(".radio-option input[type='radio']").change(function () {
-            // Encuentra el contenedor .form-group más cercano
-            var parentGroup = $(this).closest('.form-group');
-            
-            // Quitar la clase 'selected' de todas las tarjetas en el mismo grupo
-            parentGroup.find(".radio-option").removeClass("selected");
-            
-            // Agregar la clase 'selected' a la tarjeta seleccionada
-            $(this).closest('.radio-option').addClass("selected");
-        });
-    
-        // Asegúrate de que las tarjetas respondan a los clics
-        $(".radio-option").click(function() {
-            $(this).find("input[type='radio']").prop("checked", true).change();
-        });
+    // Selecciona todas las opciones de radio y añade un evento de cambio
+    $(".radio-option input[type='radio']").change(function () {
+        // Encuentra el contenedor .form-group más cercano
+        var parentGroup = $(this).closest('.form-group');
+        
+        // Quitar la clase 'selected' de todas las tarjetas en el mismo grupo
+        parentGroup.find(".radio-option").removeClass("selected");
+        
+        // Agregar la clase 'selected' a la tarjeta seleccionada
+        $(this).closest('.radio-option').addClass("selected");
+    });
+
+    // Asegúrate de que las tarjetas respondan a los clics
+    $(".radio-option").click(function() {
+        $(this).find("input[type='radio']").prop("checked", true).change();
     });
 });
+
+// Definición de las casas y sus imágenes
+const casas = {
+    Athena: '../img/icons-cards/aguila.jpg',  // Asegúrate de que esta ruta sea correcta
+    Luminaria: '../img/icons-cards/fenix.jpg', // Asegúrate de que esta ruta sea correcta
+    Nova: '../img/icons-cards/leon.jpg',     // Asegúrate de que esta ruta sea correcta
+    Salus: '../img/icons-cards/cisne.jpg'          // Asegúrate de que esta ruta sea correcta
+};

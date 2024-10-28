@@ -8,12 +8,13 @@
 
 /* Estilos para el cuerpo del documento */
 body {
-    background: url("../img/1.jpg"); /* Establece una imagen de fondo */
+    background: url("../img/fondos/1.jpg"); /* Establece una imagen de fondo */
     background-position: center; /* Centra la imagen de fondo */
     background-size: cover; /* La imagen cubre todo el área del body, manteniendo su proporción */
     background-attachment: fixed; /* La imagen de fondo se mantiene fija al hacer scroll */
     background-repeat: no-repeat; /* Evita que la imagen se repita si no cubre toda el área */
-
+    color: #362b04;
+   
     display: flex; /* Utiliza flexbox para alinear los elementos */
     align-items: center; /* Centra los elementos verticalmente */
     justify-content: center; /* Centra los elementos horizontalmente */
@@ -21,15 +22,33 @@ body {
     padding: 0 20px;
 }
 
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(219, 113, 13, 0.185); /* Un overlay blanco semitransparente para suavizar la imagen */
+    pointer-events: none; /* Permite interactuar con el contenido normalmente */
+}
+
 .form-container{
     display: flex;
-    width: 1000px;
-    height: 600px;
+    max-width: 980px; /* Asegúrate de que se ajuste al tamaño de la pantalla */
+
+
+    width: 80%; /* En lugar de 1000px, usa un porcentaje */
+
+    
+    height: 560px;
     border: 3px solid rgba(255, 255, 255, 0.3);
     border-radius: 30px;
     backdrop-filter: blur(20px);
     overflow: hidden;
 }
+
+
 
 .col-1{
     display: flex;
@@ -37,7 +56,7 @@ body {
     justify-content: center;
     flex-direction: column;
     width: 55%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(236, 136, 55, 0.438);
     backdrop-filter: blur(30px);
     border-radius: 0 30% 20% 0;
 }
@@ -47,7 +66,7 @@ body {
 }
 
 .form-image{
-    /* width: 400px; */
+    width: 400px;
     position: absolute;
     left: 0;
     width: 400px;
@@ -60,7 +79,7 @@ body {
 }
 .featured-words span{
     font-weight: 600;
-    color: #21264d;
+    color: #1D1314;
 }
 
 .col-2{
@@ -80,17 +99,27 @@ body {
     padding: 5px 30px;
     border: none;
     border-radius: 30px;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background: rgba(192, 125, 23, 0.459);
+    color: #ffffff;
+    box-shadow: 0 5px 10px rgb(73, 51, 8);
     cursor: pointer;
     transition: .2s;
 }
-.btn-1{
-    background: #21264D;
+
+.btn-1 {
+    background: #be6115;
 }
-.btn:hover{
+
+.btn-2 {
+    background: #68350c;
+}
+
+.btn:hover {
     opacity: 0.85;
+}
+
+.btn-inactive {
+    opacity: 0.5; /* O el color que prefieras para indicar que está inactivo */
 }
 
 /* Login Form */
@@ -120,15 +149,53 @@ body {
 }
 .register-form .form-title{
     margin-block: 40px 20px;
+    font-size: 2rem; /* Usa rem para un mejor escalado en diferentes tamaños */
+
 }
-.form-title{
+.form-title {
     margin: 40px 0;
     color: #fff;
     font-size: 28px;
     font-weight: 600;
+    text-align: center; /* Centrar el texto, opcional */
 }
+
+.form-title span {
+    display: inline-block; /* Asegura que se pueda aplicar transformaciones */
+    animation: wave 1.5s infinite; /* Añadir la animación de ola */
+}
+
+/* Efecto de movimiento en ola */
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0); /* Posición original */
+    }
+    20% {
+        transform: translateY(-4px); /* Sube ligeramente */
+    }
+    40% {
+        transform: translateY(3px); /* Baja ligeramente */
+    }
+    60% {
+        transform: translateY(-4px); /* Sube nuevamente */
+    }
+    80% {
+        transform: translateY(3px); /* Baja nuevamente */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 .form-inputs{
-    width: 100%;
+    width: 90%;
 }
 .input-box{
     position: relative;
@@ -139,7 +206,7 @@ body {
     padding: 0 15px;
     margin: 10px 0;
     color: #fff;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.123);
     border: none;
     border-radius: 10px;
     outline: none;
@@ -156,6 +223,26 @@ body {
     right: 15px;
     transform: translateY(-50%);
     color: #fff;
+}
+
+.input-submit {
+    position: relative; /* Para que el efecto de elevación funcione correctamente */
+    background-color: #be6115; /* Color de fondo inicial */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin bordes */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transiciones suaves */
+}
+
+.input-submit:hover {
+    transform: translateY(-5px); /* Elevar el botón */
+    background-color: #9a4e12; /* Cambiar el color de fondo al pasar el mouse */
+}
+
+.input-field:focus {
+    background-color: rgba(235, 145, 61, 0.384); /* Fondo iluminado al seleccionar */
 }
 .forgot-pass{
     display: flex;
@@ -180,7 +267,7 @@ body {
     padding: 0 15px;
     margin: 10px 0;
     color: #fff;
-    background: #21264D;
+    background: #6d310a;
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
@@ -190,6 +277,8 @@ body {
 .input-submit:hover{
     gap: 15px;
 }
+
+
 .social-login{
     display: flex;
     gap: 20px;
@@ -221,10 +310,10 @@ body {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     transition: .2s;
 }
-.social-login i:hover{
-    transform: scale(0.9);
+.social-login i:hover {
+    /* Cambia el color o aplica una sombra al pasar el ratón */
+    filter: brightness(1.2);
 }
-
 
 /* RESPONSIVE */
 @media (max-width: 892px){
@@ -236,7 +325,11 @@ body {
     }
     .col-2{
         width: 100%;
+        width: 100%;
+        padding: 10px; /* Ajusta el padding si es necesario */
     }
+
+    
 }
 
 #postRegisterSection {
@@ -289,3 +382,48 @@ body {
     max-width: 100%; /* Asegúrate de que las imágenes no excedan el ancho del contenedor */
     height: auto; /* Mantiene la proporción de la imagen */
 }
+
+
+@keyframes fly {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(calc(100vw - 100px), 50px); }
+    50% { transform: translate(calc(100vw - 100px), 100vh); }
+    75% { transform: translate(0, 50px); }
+    100% { transform: translate(0, 0); }
+}
+
+#crow {
+    animation: fly 5s linear infinite; /* Ajusta la duración y tipo de animación según tus preferencias */
+}
+
+#crow-container {
+    position: fixed; /* O usa 'absolute' si quieres que se mueva con el scroll */
+    top: 10px; /* Ajusta la posición vertical según lo desees */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translateX(-50%); /* Centrar usando transform */
+    z-index: 9999; /* Asegúrate de que el cuervo esté encima de otros elementos */
+    pointer-events: none; /* Evita que el cuervo interfiera con los clics en otros elementos */
+}
+
+
+/* Clase para el efecto de difuminado */
+.fade-in {
+    opacity: 0; /* Comienza completamente transparente */
+    transition: opacity 0.5s ease-in-out; /* Cambia la duración a 0.5 segundos */
+}
+
+/* Clase que se aplicará al finalizar el difuminado */
+.fade-in-active {
+    opacity: 1; /* Se vuelve completamente visible */
+}
+
+
+#accedeGoogle {
+    font-size: 18px; /* Ajustar el tamaño de la fuente */
+    transition: color 0.3s ease; /* Efecto de transición para cambios de color */
+    align-items: center;
+    text-align: center;
+    padding-top: 8px;
+   
+}
+

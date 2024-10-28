@@ -228,8 +228,9 @@ p {
 
 #resultadoFinal h2 {
     font-size: 2.5rem;
-    color: #b85729;
-    text-shadow: 2px 2px #ffe8cc;
+    color: #ffffff;
+    text-shadow: 2px 2px #633b0a;
+    text-align: center;
 }
 
 #resultadoFinal button {
@@ -253,8 +254,9 @@ p {
     color: #d9534f;
 }
 
-
-
+ul{
+    font-size: 5px
+}
 
 
 
@@ -272,3 +274,124 @@ p {
     border: 1px solid #ff9800; /* Borde al seleccionar para mayor claridad */
 }
 
+
+
+
+
+/* Estilos para el mensaje final */
+#resultadoFinal {
+    display: none; /* Oculto por defecto */
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc; /* Borde ligero para el contenedor */
+    border-radius: 8px; /* Esquinas redondeadas */
+    background-color: #bb6c06a8; /* Color de fondo suave */
+    margin-top: 20px; /* Espacio superior */
+}
+
+/* Estilo de la imagen */
+#imagenCasa {
+    max-width: 150px; /* Ancho máximo de la imagen */
+    height: auto; /* Mantener la proporción */
+    margin: 10px 0; /* Espacio arriba y abajo de la imagen */
+}
+
+/* Estilo del botón */
+#goToFeedBtn {
+    margin-top: 10px; /* Espacio arriba del botón */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño de fuente */
+    color: #fff; /* Color del texto */
+    background-color: #7c5d09; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+/* Cambiar color de fondo del botón al pasar el mouse */
+#goToFeedBtn:hover {
+    background-color: #412807; /* Color de fondo al pasar el mouse */
+}
+
+
+
+
+
+
+
+
+/* Media Queries */
+
+/* Media Queries */
+@media (max-width: 768px) {
+
+    .text-center{
+        font-size: 26px;
+        margin: 2px;
+        padding: 0px;
+    }
+
+    .container {
+
+        padding: 10px;
+        position: relative;
+        z-index: 2;
+    }
+
+    body{
+        padding: 0px;
+        margin: 0px;
+    }
+    .col-md-3 {
+        flex: 0 0 50%; /* Cambia a 50% en pantallas pequeñas para dos columnas */
+        max-width: 50%;
+    }
+    
+    .card-title{
+        font-size: 14px;
+    }
+    
+    #imagenCasa {
+        max-width: 100px; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+    }
+
+    #goToFeedBtn {
+        font-size: 14px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+        padding: 8px 16px; /* Espaciado interno más pequeño */
+    }
+
+    
+
+    .magic-background h1 {
+        font-size: 1.5em; /* Ajusta el tamaño de fuente */
+    }
+
+    .magic-background p {
+        font-size: 1em; /* Ajusta el tamaño de fuente */
+    }
+
+    /* Reduce el tamaño de la pregunta */
+    #preguntaTrivia {
+        font-size: 1.2em; /* Ajusta el tamaño de la pregunta en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .magic-background h1 {
+        font-size: 1.2em; /* Aún más pequeño para pantallas muy pequeñas */
+    }
+
+    .magic-background p {
+        font-size: 0.9em; /* Aún más pequeño para pantallas muy pequeñas */
+    }
+
+    /* Reduce aún más el tamaño de la pregunta */
+    #preguntaTrivia {
+        font-size: 1em; /* Ajusta el tamaño de la pregunta en pantallas muy pequeñas */
+    }
+
+    .card {
+        margin-bottom: 5px; /* Espacio entre las tarjetas */
+    }
+}

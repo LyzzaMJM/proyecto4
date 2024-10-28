@@ -6,12 +6,12 @@ body {
     background-attachment: fixed; /* Hace que la imagen se mantenga fija al hacer scroll */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     color: #4B3B2F; /* Marrón oscuro para el texto principal */
-    padding-bottom: 20px;
-    margin-top: 20px;
+    padding: 20px; /* Espaciado vertical */
+    margin: 10px; /* Elimina el margen superior */
+
 }
-html{
-    margin: 20px;
-}
+
+
 
 body::before {
     content: '';
@@ -32,7 +32,7 @@ body::before {
 
 /* TITULO */
 h1.display-4 {
-    font-size: 3rem; /* Tamaño grande para el título */
+    font-size: 40px; /* Tamaño ajustado para mejor responsividad */
     font-weight: bold; /* Negrita para resaltar */
     margin-bottom: 20px; /* Espacio debajo del título */
     color: #ffffff; /* Color blanco para el texto */
@@ -46,6 +46,9 @@ h1.display-4 {
     z-index: 1;
 }
 
+
+
+/* Efecto hover para el título */
 h1.display-4:hover {
     transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
     text-shadow: 
@@ -55,27 +58,23 @@ h1.display-4:hover {
 }
 
 /* CARDS */
-/* Centrado de las cards con tamaño reducido */
-/* Centrado de las cards con tamaño reducido */
+/* Centrado y tamaño de las cards */
 .card {
     margin: 0 auto; /* Centra la card */
-    max-width: 60%; /* Aumenta el tamaño de las cards al 50% */
-    max-height: 80%;
+    max-width: 85%; /* Ajusta el tamaño de las cards */
     height: auto; /* Mantiene la proporción de las cards */
-    overflow: hidden; /* Asegura que el contenido no se salga del card */
+    overflow: visible; /* Asegura que el contenido no se salga del card */
     background-color: rgba(100, 77, 64, 0.7); /* Fondo marrón oscuro semitransparente */
     color: white; /* Color de texto dentro de la card */
     border-radius: 15px; /* Bordes redondeados para suavizar el diseño */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Efecto de sombra */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 20px; /* Espacio superior para las cards */
+    margin-top: 10px; /* Espacio superior para las cards */
 }
 
-/* Ajusta el contenedor del carrusel para un mejor espaciado */
-.carousel {
-    padding: 60px; /* Agrega espacio alrededor del carrusel */
-}
 
+
+/* Efecto hover para las cards */
 .card:hover {
     transform: scale(1.05); /* Efecto de ampliación al hacer hover */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
@@ -86,113 +85,45 @@ h1.display-4:hover {
     background-color: #dbd7c9; /* Fondo del encabezado */
     color: #644d40; /* Color del texto */
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 8px; /* Reduce este valor para achicar el tamaño del texto */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total */
+    padding: 5px; /* Reduce el padding para achicar el encabezado */
 }
 
-/* Estilos para la Casa 1: Athena */
-#header-titulo-a {
-    background-color: #d4d1d1; /* Fondo naranja suave */
+
+.card img {
+    max-height: 260px; /* Ajusta el tamaño máximo para la imagen */
+    width: 90%;
+    object-fit: cover;
+}
+
+.card-text {
+    font-size: 10px; /* Ajusta el tamaño según tu preferencia */
+}
+
+.card-title.text-center{
+    font-size: 14px;
+}
+
+li{
+    font-size: 13px;
+}
+
+/* Estilos específicos para cada casa */
+#header-titulo-a, #header-titulo-b, #header-titulo-c, #header-titulo-d {
+    font-size: 14px; /* Tamaño de fuente ajustado */
     color: #532c0c; /* Texto blanco */
     font-weight: bold;
-    font-size: 1.3rem;
     margin-bottom: 0px;
 }
 
-#carrusel-a .card {
+#carrusel-a .card, #carrusel-b .card, #carrusel-c .card, #carrusel-d .card {
     background-color: rgba(247, 136, 62, 0.85); /* Fondo naranja semitransparente */
-    color: #ffffff; /* Texto blanco */
     border: none; /* Eliminar bordes */
 }
 
 #carrusel-a .card-body {
     background-color: rgba(83, 44, 12, 0.8); /* Color suave para el cuerpo de la card */
-}
-
-#carrusel-a .card-title {
-    color: #f7883e; /* Título con color oscuro */
-}
-
-#carrusel-a .card-text ul li {
-    color: #f7883e; /* Color oscuro para los elementos de la lista */
-}
-
-/* Estilos para la Casa 2: Luminaria */
-#header-titulo-b {
-    background-color: #190F23; /* Fondo dorado brillante */
-    color: #ffffff; /* Color del texto oscuro para contraste */
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 0px;
-}
-
-#carrusel-b .card {
-    background-color: rgba(209, 159, 97, 0.85); /* Fondo semitransparente dorado */
-    color: #ffffff; /* Color del texto blanco */
-    border: none; /* Eliminar bordes */
-}
-
-#carrusel-b .card-body {
-    background-color: #3C5B62; /* Color más suave para el cuerpo de la card */
-}
-
-#carrusel-b .card-title {
-    color: #8ABAAB; /* Título con color oscuro */
-}
-
-#carrusel-b .card-text ul li {
-    color: #d4bc9e; /* Color oscuro para los elementos de la lista */
-}
-
-/* Estilos para la Casa 3: Nova */
-#header-titulo-c {
-    background-color: #ffffff; /* Fondo blanco */
-    color: #F37614; /* Color para el texto */
-    font-weight: bold;
-    font-size: 1.3rem;
-}
-
-#carrusel-c .card {
-    background-color: rgba(255, 255, 255, 0.85); /* Fondo semitransparente */
-    color: #000000; /* Color del texto negro */
-    border: none; /* Eliminar bordes */
-}
-
-#carrusel-c .card-body {
-    background-color: #F37614; /* Color para el cuerpo de la card */
-}
-
-#carrusel-c .card-title {
-    color: #1D1314; /* Título con color oscuro */
-}
-
-#carrusel-c .card-text ul li {
-    color: #F37614; /* Color oscuro para los elementos de la lista */
-}
-
-/* Estilos para la Casa 4: Salus */
-#header-titulo-d {
-    background-color: #E3CFAF; /* Fondo rojo suave */
-    color: #7F8295; /* Texto blanco */
-    font-weight: bold;
-    font-size: 1.3rem;
-}
-
-#carrusel-d .card {
-    background-color: rgba(227, 207, 175, 0.85); /* Fondo rojo semitransparente */
-    color: #ffffff; /* Texto blanco */
-    border: none; /* Eliminar bordes */
-}
-
-#carrusel-d .card-body {
-    background-color: #7F8295; /* Color suave para el cuerpo de la card */
-}
-
-#carrusel-d .card-title {
-    color: #2c3e50; /* Título con color oscuro */
-}
-
-#carrusel-d .card-text ul li {
-    color: #2c3e50; /* Color oscuro para los elementos de la lista */
 }
 
 /* Sombra de la siguiente card */
@@ -225,159 +156,143 @@ h1.display-4:hover {
     padding: 10px;
 }
 
-/* Sparkle effect (opcional, para añadir un toque mágico) */
-@keyframes sparkle {
-    0%, 100% { opacity: 0.8; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
-}
 
-.sparkle {
-    animation: sparkle 1.5s infinite; /* Efecto de chispa continuo */
-}
+/* Estilo para el botón de salida */
 
-
-
-
-.button-salida button {
-    background-color: #FF6F20; /* Color anaranjado */
-    color: #fff; /* Texto blanco */
+#logout-button {
+    background-color: #ee5f0d; /* Color rojo */
+    color: white; /* Texto blanco */
+    font-weight: bold; /* Texto en negrita */
     border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes más redondeados */
-    padding: 8px 16px; /* Espaciado interno reducido */
-    font-size: 14px; /* Tamaño de fuente más pequeño */
-    font-weight: bold; /* Negrita para destacar el texto */
-    cursor: pointer; /* Cursor tipo puntero */
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
-    margin-top: 20px; /* Espacio antes del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espaciado interno */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
 }
 
-.button-salida {
-    margin-top: 20px; /* Espacio antes del botón */
+#logout-button:hover {
+    background-color: #a55e0d; /* Color más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Efecto de aumento al pasar el ratón */
 }
 
-
-.button-salida button:hover {
-    background-color: #C45A0D; /* Color al pasar el ratón */
-    transform: translateY(-2px); /* Elevación más ligera al pasar el ratón */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
-}
-
-.button-salida button:focus {
-    outline: none; /* Sin contorno */
-    box-shadow: 0 0 0 4px rgba(255, 112, 64, 0.5); /* Sombra de enfoque más clara */
-}
-
-
+/* Estilo para el modal */
 .modal {
     display: none; /* Oculto por defecto */
     position: fixed; /* Fijo en la pantalla */
-    z-index: 3; /* Encima de otros elementos */
+    z-index: 1; /* Encima de otros elementos */
     left: 0;
     top: 0;
     width: 100%; /* Ancho completo */
     height: 100%; /* Altura completa */
     overflow: auto; /* Desplazamiento si es necesario */
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con opacidad */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
 }
 
+/* Contenido del modal */
 .modal-content {
     background-color: #fff; /* Fondo blanco */
-    margin: 10% auto; /* Margen superior e inferior ajustado */
-    padding: 30px; /* Espaciado interno mayor */
-    border: 1px solid #d4bc9e; /* Borde gris */
-    border-radius: 12px; /* Bordes redondeados */
-    width: 90%; /* Ancho del modal */
+    margin: 15% auto; /* Espacio arriba y centrado */
+    padding: 20px; /* Espaciado interno */
+    border: 1px solid #a36405; /* Borde gris */
+    border-radius: 10px; /* Bordes redondeados */
+    width: 80%; /* Ancho del modal */
     max-width: 500px; /* Ancho máximo */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra para el modal */
-    transition: transform 0.3s ease; /* Transición suave para aparición */
-    transform: translateY(-10px); /* Efecto de entrada */
 }
 
-.modal.show {
-    display: block; /* Mostrar modal */
-    transform: translateY(0); /* Restablecer el efecto de entrada */
+/* Estilo del ícono en el modal */
+.confirmation-container {
+    text-align: center; /* Centrar el texto */
+    margin-bottom: 20px; /* Espacio abajo */
 }
 
+.confirmation-container i {
+    font-size: 40px; /* Tamaño del ícono */
+    color: #e07b07; /* Color del ícono */
+}
+
+/* Estilo del mensaje de confirmación */
+.confirmation-message {
+    font-size: 20px; /* Tamaño del texto */
+    margin: 10px 0; /* Espacio arriba y abajo */
+}
+
+/* Estilo para el botón de confirmación */
+.btn-confirm {
+    background-color: #c2970c; /* Color verde */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-weight: bold; /* Texto en negrita */
+    cursor: pointer; /* Cambiar el cursor */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.btn-confirm:hover {
+    background-color: #4b2f06; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilo para el botón de cerrar en el modal */
 .close {
-    color: #d4bc9e; /* Color del botón de cerrar */
+    color: #a35c0b; /* Color gris */
     float: right; /* A la derecha */
-    font-size: 28px; /* Tamaño de fuente */
-    font-weight: bold; /* Negrita */
+    font-size: 28px; /* Tamaño del texto */
+    font-weight: bold; /* Texto en negrita */
+    cursor: pointer; /* Cambiar el cursor */
 }
 
 .close:hover,
 .close:focus {
-    color: #FF6F20; /* Color al pasar el ratón */
+    color: black; /* Color al pasar el ratón */
     text-decoration: none; /* Sin subrayado */
-    cursor: pointer; /* Cursor tipo puntero */
+    cursor: pointer; /* Cambiar el cursor */
 }
 
-.btn-confirm {
-    background-color: #FF6F20; /* Color de fondo: Índigo */
-    color: #FFFAFA; /* Color del texto: Blanco Fantasma */
-    border: none; /* Sin borde */
-    border-radius: 8px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
-    cursor: pointer; /* Cursor tipo puntero */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
-}
 
-.btn-confirm:hover {
-    background-color: #C45A0D; /* Color al pasar el ratón: Azul Oscuro */
-    transform: translateY(-2px); /* Elevación al pasar el ratón */
-}
 
-.btn-confirm:focus {
-    outline: none; /* Sin contorno */
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Sombra de enfoque */
-}
 
-.confirmation-message {
-    text-align: center; /* Centrar el texto */
-    font-family: 'Garamond', serif; /* Fuente elegante */
-    font-size: 24px; /* Tamaño de fuente grande */
-    color: #FF6F20; /* Color anaranjado */
-    margin: 20px 0; /* Margen superior e inferior */
-    padding: 10px; /* Espaciado interno */
-    border-radius: 12px; /* Bordes redondeados */
-    animation: fadeIn 0.5s ease-in; /* Efecto de aparición */
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
-}
 
-/* Animación para el texto */
+
+
+
+
+
+
+
+/* Animación para el modal */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-10px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
-}
-.confirmation-container {
-    text-align: center; /* Centrar el contenido */
-    margin: 20px 0; /* Margen superior e inferior */
 }
 
-.confirmation-container i {
-    font-size: 48px; /* Tamaño del ícono */
-    color: #FF6F20; /* Color del ícono */
-    margin-bottom: 10px; /* Espaciado debajo del ícono */
-    animation: bounce 1s infinite; /* Efecto de rebote */
+/* Responsividad */
+@media (max-width: 768px) {
+    h1.display-4 {
+        font-size: 2rem; /* Ajusta el tamaño del título en pantallas pequeñas */
+    }
+
+    .carousel-item {
+        padding: 10px; /* Espaciado adicional para el carrusel */
+    }
+
+    .card {
+        width: 100%; /* Las cards ocupan el 100% en pantallas pequeñas */
+    }
+
+    .modal-content {
+        padding: 20px; /* Espaciado interno reducido para el modal */
+    }
 }
 
-/* Animación de rebote para el ícono */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
+@media (max-width: 576px) {
+    h1.display-4 {
+        font-size: 1.8rem; /* Ajusta el tamaño del título en pantallas muy pequeñas */
     }
-    40% {
-        transform: translateY(-10px); /* Eleva el ícono un poco */
-    }
-    60% {
-        transform: translateY(-5px); /* Eleva menos el ícono */
+
+    .button-salida button {
+        width: 100%; /* Botones ocupan el 100% */
     }
 }
