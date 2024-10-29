@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyAjB7gwIhRn43H0_LFpJXk2HtXfheuD1Ak",
     authDomain: "academy-a2996.firebaseapp.com",
     projectId: "academy-a2996",
@@ -16,44 +16,34 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const provider = new GoogleAuthProvider(); // Proveedor de Google
+const provider = new GoogleAuthProvider();
 
 // Función para registrar un nuevo usuario
 export function registerUser(email, password, fullName) {
     return createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(userCredential => {
             console.log("Registro exitoso. ¡Bienvenido!");
-            addFullName(fullName);
-            localStorage.setItem('fullName', fullName);
-            window.location.href = 'feed.html'; 
+            updateProfile(userCredential.user, { displayName: fullName })
+                .then(() => {
+                    localStorage.setItem('fullName', fullName);
+                    window.location.href = '/assets/html/feed.html';
+                });
         })
-        .catch((error) => {
+        .catch(error => {
             console.error("Error al registrar:", error.code, error.message);
             alert("Error al registrar: " + error.message);
         });
 }
 
-function addFullName(fullName) {
-    updateProfile(auth.currentUser, {
-        displayName: fullName,
-    }).then(() => {
-        // Considera si realmente necesitas recargar la página
-        console.log("Nombre actualizado exitosamente");
-    }).catch((error) => {
-        console.error("Error al actualizar el nombre:", error.message);
-    });
-}
-
 // Función para iniciar sesión
 export function loginUser(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log("Inicio de sesión exitoso. ¡Bienvenido!", user.displayName);
-            localStorage.setItem('fullName', user.displayName || ''); // Guarda el nombre, si está disponible
-            window.location.href = 'assets/html/feed.html'; // Cambia según la estructura de tu carpeta
+        .then(userCredential => {
+            console.log("Inicio de sesión exitoso. ¡Bienvenido!", userCredential.user.displayName);
+            localStorage.setItem('fullName', userCredential.user.displayName || '');
+            window.location.href = '/assets/html/feed.html';
         })
-        .catch((error) => {
+        .catch(error => {
             console.error("Error al iniciar sesión:", error.code, error.message);
             alert("Error al iniciar sesión: " + error.message);
         });
@@ -62,37 +52,17 @@ export function loginUser(email, password) {
 // Función para ingresar con Google
 export function loginWithGoogle() {
     return signInWithPopup(auth, provider)
-        .then((result) => {
+        .then(result => {
             const user = result.user;
             console.log("Ingreso con Google exitoso. ¡Bienvenido!", user);
-
-            // Guarda el nombre completo en localStorage
             localStorage.setItem('fullName', user.displayName || 'Sin nombre');
-
-            window.location.href = 'assets/html/feed.html'; // Cambia según la estructura de tu carpeta
-            return result; 
+            window.location.href = '/assets/html/feed.html';
         })
-        .catch((error) => {
+        .catch(error => {
             console.error("Error al iniciar sesión con Google:", error.code, error.message);
             alert("Error al ingresar con Google: " + error.message);
         });
 }
-
-// Función de prueba para leer datos de Firestore
-const testFirestore = async () => {
-    try {
-        const querySnapshot = await getDocs(collection(db, "users"));
-        querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
-        });
-    } catch (error) {
-        console.error("Error al acceder a Firestore:", error);
-    }
-};
-
-// Llama a la función de prueba (puedes descomentarla si deseas ejecutar la prueba)
-testFirestore();
-
 //             FEEED 
 // Función para agregar una post
 export function agregarPost(comentario) {
