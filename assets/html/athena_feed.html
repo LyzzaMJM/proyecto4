@@ -12,7 +12,9 @@
 </head>
 <body>
     
-
+  <div id="button-salida" class="button-salida">
+    <button id="logout-button" class="btnSalir">Salir</button>
+</div>
   <!-- Portada -->
   <div class="card mb-2">
     <div>
@@ -37,6 +39,10 @@
             <textarea type="text" id="opinion" class="form-control" placeholder="Comparte dudas o opiniones"></textarea>
             <div class="d-flex justify-content-end">
               <button type="submit"  id="boton-post" class="btn btn-primary me-2">Publicar</button>
+            </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Default file input example</label>
+              <input class="form-control" type="file" id="formFile">
             </div>
           </form>
         </div>
@@ -69,7 +75,7 @@
   </div><!-- del container  -->
 
   <!-- modal para editar el post -->
-  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <form id="editForm">
         <div class="modal-content">

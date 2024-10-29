@@ -1,15 +1,22 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, 
+    signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"; //autentificacion de usuarios
+import { getFirestore, collection, query, orderBy, addDoc, getDocs, 
+    getDoc, deleteDoc, onSnapshot, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js"; //almacena y gestiona datos
+import { updateProfile } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"; //actualiza el perfil del usuario 
+import { serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js"; 
+import { getStorage, ref, getDownloadURL,  uploadBytes } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
+
+
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAjB7gwIhRn43H0_LFpJXk2HtXfheuD1Ak",
-    authDomain: "academy-a2996.firebaseapp.com",
-    projectId: "academy-a2996",
-    storageBucket: "academy-a2996.appspot.com",
-    messagingSenderId: "249035506580",
-    appId: "1:249035506580:web:e43fa82c55fa9622940581",
-    measurementId: "G-QTXSZZEDH5"
+    apiKey: "AIzaSyCf_lH7ndXTE405SZc8YDcwXFdg6LrTsQE",
+    authDomain: "redsocialeduconect.firebaseapp.com",
+    projectId: "redsocialeduconect",
+    storageBucket: "redsocialeduconect.appspot.com",
+    messagingSenderId: "654346742916",
+    appId: "1:654346742916:web:b392def2f54a9b1e3466d1",
+    measurementId: "G-C48L1Z9T1Q"
 };
 
 // Inicializa Firebase
@@ -86,33 +93,60 @@ testFirestore();
 
 //             FEEED 
 // Función para agregar una post
-export function agregarPost(comentario) {
-    console.log("guardado el post:", comentario);
-    //crea la coleccion en el firebase
-    return addDoc(collection(db, 'publicaciones'), {
-        comentario: comentario
-    });
+export function agregarPost(comentario, imageUrl) {
+    let imageUrl = null;
+    console.log("guardando el post:", comentario);
+    // Verifica si hay un archivo de imagen
+    if (imageFile) {
+        const storageRef = ref(storage, `images/${auth.currentUser.uid}/${imageFile.name}`);
+        return uploadBytes(storageRef, imageFile).then((snapshot) => {
+            return getDownloadURL(snapshot.ref);
+        }).then((url) => {
+            imageUrl = url;
+            // Guarda el post con el comentario y la URL de la imagen
+            return addDoc(collection(db, 'publicaciones'), {
+                comentario: comentario,
+                uid: auth.currentUser.uid, 
+                likeContador: 0, 
+                imageUrl: imageUrl, 
+                displayName: auth.currentUser.displayName || 'Usuario anónimo',
+                timestamp: serverTimestamp() // Marca de tiempo del servidor
+            });
+        });
+    } else {
+        // Guarda el post sin imagen
+        return addDoc(collection(db, 'publicaciones'), {
+            comentario: comentario,
+            uid: auth.currentUser.uid,
+            likeContador: 0, // Contador de likes
+            imageUrl: null, // Sin imagen
+            displayName: auth.currentUser.displayName || 'Usuario anónimo',
+            timestamp: serverTimestamp() // Marca de tiempo del servidor
+        });
+    }
 }
-  
+
 export function totalPost() {
-      console.log("publicaciones totales");
-      //muestra todos los post de la coleccion de publicaiones
-      return getDocs(collection(db, 'publicaciones'));
+    console.log("publicaciones totales");
+    //muestra todos los post de la coleccion de publicaiones
+    return getDocs(query(collection(db, 'publicaciones'), orderBy("timestamp", "desc")));
 }
-  
+
+
 export function obtenerPost(id) {
-      console.log("post buscado:", id);
-      return getDoc(doc(db, 'publicaciones', id));
+    console.log("post buscado:", id);
+    return getDoc(doc(db, 'publicaciones', id));
 }
-  
+
 export function actualizado(id, newFields) {
-      console.log("actualizado:", id);
-      return updateDoc(doc(db, 'publicaciones', id), newFields);
+    console.log("actualizado:", id);
+    return updateDoc(doc(db, 'publicaciones', id), newFields);
 }
-  
+
 export function eliminar(id) {
-      console.log("eliminado:", id);
-      return deleteDoc(doc(db, "publicaciones", id));
+    console.log("eliminado:", id);
+    return deleteDoc(doc(db, "publicaciones", id));
 }
-  
+
+
 export { auth };
