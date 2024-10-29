@@ -55,6 +55,7 @@ export function loginUser(email, password) {
         .then((userCredential) => {
             console.log("Inicio de sesión exitoso. ¡Bienvenido!");
             window.location.href = 'assets/html/athena_feed.html';//Cmbiar segun nombre de la carpeta del feed
+            window.location.href = 'assets/html/athena_feed.html';//Cmbiar segun nombre de la carpeta del feed
         })
         .catch((error) => {
             console.error("Error al iniciar sesión:", error.code, error.message);
@@ -67,6 +68,7 @@ export function loginWithGoogle() {
     return signInWithPopup(auth, provider)
         .then((result) => {
             console.log("Inicio de sesión con Google exitoso. ¡Bienvenido!", result.user);
+            window.location.href = 'assets/html/athena_feed.html';//Cambiar segun nombre de la carpeta del feed
             window.location.href = 'assets/html/athena_feed.html';//Cambiar segun nombre de la carpeta del feed
             return result; // Retorna el resultado para que se maneje en script.js
         })
