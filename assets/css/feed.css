@@ -1,140 +1,260 @@
+/* Estilos generales */
 body {
-    background-color: #f6efe7;
+  background-color: #f7f7f7; /* Color de fondo suave */
+  font-family: Arial, sans-serif;
 }
-  
+
+/* Estilo para el botón de salida */
+.button-salida {
+  position: fixed; /* Mantener el botón fijo en la esquina superior derecha */
+  top: 20px;
+  right: 20px;
+  z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+}
+
+.btnSalir {
+  background-color: #dc3545; /* Color rojo para el botón de salir */
+  color: white; /* Texto blanco */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.btnSalir:hover {
+  background-color: #c82333; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilo para la tarjeta de portada */
+.card {
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  overflow: hidden; /* Para ocultar el desbordamiento */
+}
+
+.portImg {
+  width: 100%; /* Imagen ocupa el ancho completo de la tarjeta */
+  height: auto; /* Mantener la proporción de la imagen */
+}
+
+/* Estilo para los posts */
+.post-box {
+  background-color: white; /* Fondo blanco para los posts */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
 .profile-pic {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+  border-radius: 50%; /* Hacer la imagen de perfil circular */
 }
-  /* Tarjeta de portada */
-  .cardPortada {
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    overflow: hidden;
-  }
-  .portImg{
-    width: 100%; /* Ocupa el 100% del ancho de la tarjeta */
-    height: 130px;
-    object-fit: cover;/*ayuda a recortar la imagen para llenar el espacio */
-  }
-  
-  .post-box {
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
-  .feed {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  /* Eventos */
+
+/* Estilo para el formulario de publicación */
+#info-form {
+  margin-top: 15px; /* Margen superior para separar del perfil */
+}
+
+/* Estilo para la sección de eventos */
+.card-title {
+  color: #007bff; /* Color azul para los títulos de las tarjetas */
+}
+
+.card-text {
+  color: #6c757d; /* Color gris para el texto */
+}
+
+/* Estilo para el modal */
+.modal-content {
+  border-radius: 10px; /* Bordes redondeados en el modal */
+}
+
+.modal-header {
+  border-bottom: none; /* Sin borde en la parte inferior */
+}
+
+.modal-footer {
+  border-top: none; /* Sin borde en la parte superior */
+}
+
+/* Estilo del pie de página */
+#footer {
+  background-color: #343a40; /* Fondo oscuro para el pie de página */
+  color: white; /* Texto blanco */
+  position: relative; /* Posicionamiento relativo */
+}
+
+#footer-p {
+  margin: 0; /* Eliminar margen */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  /* Ajustar la tarjeta de portada en pantallas pequeñas */
   .card {
-    border-radius: 12px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      margin: 10px; /* Margen para mejorar el espaciado */
   }
-  .card-title {
-    color: #644d40;
-    font-weight: 600;
+
+  /* Ajustar el tamaño de la tarjeta de eventos */
+  .col-lg-4 {
+      display: none; /* Ocultar la columna de eventos en pantallas pequeñas */
   }
-  /* Calendario */
-  iframe {
-    border-radius: 8px;
-    border: 1px solid #d4bc9e;
-  }
-  .sidebar {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  .friend-list img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-  .profile-section {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .profile-section img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  .profile-section h5 {
-    margin: 0;
-  }
-  /* Estilos para el textarea de pensamientos */
-  #opinion {
-    background-color: #ffffff; /* Color de fondo del input */
-    color: #000000; /* Color del texto */
-    border: 1px solid #ccc; /* Borde del input */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 10px; /* Espaciado interno */
-    width: 100%; /* Ocupa el 100% del ancho */
-  }
-  
-  /* Estilos para el textarea cuando está enfocado */
-  #opinion:focus {
-    background-color: #d4bc9e; /* Cambia el fondo cuando está enfocado */
-    border-color: #644d40; /* Cambia el borde cuando está enfocado */
-    box-shadow: 0 0 5px 2px #644d40; /* Cambia el color del sombreado */
-  }
-  
-  /* Estilos para el botón "Publicar" */
-  #boton-post {
-    background-color: #dbd7c9; /* Color de fondo de los botones */
-    border: none; /* Sin borde */
-    color: #644d40; /* Color del texto */
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 16px;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-  }
-  
-  #boton-post:hover {
-    background-color: #d4bc9e; /* Cambia el fondo al pasar el ratón */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-  }
-  
-  /* Estilos para los botones "Like" y "Comment" */
-  #boton-like, #boton-comentario {
-    background-color: transparent; /* Fondo transparente */
-    border: 1px solid #786859; /* Borde con color de la paleta */
-    color: #786859; /* Color del texto */
-    border-radius: 5px; /* Bordes redondeados */
-    font-size: 14px;
-    padding: 5px 15px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  #boton-like:hover, #boton-comentario:hover {
-    background-color: #786859; /* Cambia el fondo al pasar el ratón */
-    color: #ffffff; /* Cambia el color del texto al pasar el ratón */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-  }
-  
-  /* Estilos para el calendario */
-  .calendario {
-    text-align: center;
-  }
-  
-  /* Estilos del footer */
-  #footer {
-    margin-top: 20px;
-    min-height: 60px; /* Aumentar la altura del pie de página */
-    background-color: #644d40; /* Color de fondo del pie de página */
-    color: white; /* Color del texto */
-  }
-  
-  #footer-p {
-    text-align: center;
-  }
+}
+
+
+
+
+
+.card-container {
+  display: flex; /* O 'block', según cómo quieras que se muestren las tarjetas */
+  flex-direction: column; /* Apilar tarjetas verticalmente */
+  gap: 10px; /* Espacio entre tarjetas */
+  margin-top: 20px; /* Espacio superior para separar de los campos de entrada */
+}
+
+.event-card {
+  border: 1px solid #ccc; /* Borde de la tarjeta */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+  background-color: #f9f9f9; /* Color de fondo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de profundidad */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General styles for the feed */
+.feed {
+  background-color: #f9f9f9; /* Light background for posts */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.2s; /* Animation on hover */
+}
+
+.feed:hover {
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.profile-pic {
+  border-radius: 50%; /* Circular profile pictures */
+  width: 50px; /* Fixed width for consistency */
+  height: 50px; /* Fixed height for consistency */
+}
+
+.card-body {
+  padding: 1rem; /* Space inside the card */
+}
+
+h4#nombreUsuario {
+  color: #333; /* Dark text for the user name */
+}
+
+h6 {
+  color: #888; /* Grey color for the date */
+  margin-left: auto; /* Align date to the right */
+}
+
+.btn-outline-primary {
+  border-color: #007bff; /* Primary border color */
+  color: #007bff; /* Primary text color */
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff; /* Primary background on hover */
+  color: white; /* White text on hover */
+}
+
+.comments-section {
+  margin-top: 15px; /* Space above the comments section */
+}
+
+.add-comment {
+  display: flex; /* Flexbox for input and button */
+  gap: 10px; /* Space between input and button */
+  margin-bottom: 15px; /* Space below the comment input */
+}
+
+.comment-input {
+  flex: 1; /* Take up remaining space */
+  padding: 8px; /* Padding for input */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded edges */
+  transition: border-color 0.2s; /* Transition for border color */
+}
+
+.comment-input:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+.comments-list {
+  max-height: 200px; /* Limit height for the comments section */
+  overflow-y: auto; /* Scroll if too many comments */
+  margin-top: 10px; /* Space above comments list */
+}
+
+.comment {
+  background-color: #f0f0f0; /* Light grey background for comments */
+  border-radius: 5px; /* Rounded corners for comments */
+  padding: 5px; /* Padding inside comments */
+  margin-bottom: 5px; /* Space between comments */
+}
+
+.comment strong {
+  color: #333; /* Dark color for commenter name */
+}
+
+.comment small {
+  color: #888; /* Grey color for comment timestamp */
+}
