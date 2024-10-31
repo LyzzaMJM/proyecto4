@@ -1,6 +1,6 @@
 /* Estilo adicional para el fondo de la página */
 body {
-    background-image: url('/assets/img/fondos/3.jpg'); /* Cambia 'ruta/de/tu/imagen.jpg' por la ruta de tu imagen */
+    background-image: url('../img/fondos/3.jpg'); /* Cambia 'ruta/de/tu/imagen.jpg' por la ruta de tu imagen */
     background-size: cover; 
     background-position: center; 
     background-attachment: fixed;

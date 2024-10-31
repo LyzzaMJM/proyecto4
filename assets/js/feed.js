@@ -1,32 +1,31 @@
-import { auth, agregarPost, totalPost, obtenerPost, eliminar, actualizado,  agregarComentario, cargarComentariosEnTiempoReal } from "./config.js";//
-import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";//
-
-// Exporta otras funciones como agregarPost, totalPost, obtenerPost, actualizado, eliminar, etc.
-//export { auth, agregarPost, totalPost, obtenerPost, actualizado, eliminar };
-
-
-
-
+import { auth, modificarLike, agregarPost, totalPost, obtenerPost, eliminar, actualizado, agregarComentario, cargarComentariosEnTiempoReal } from "./config.js";
+import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 
 let editStatus = false; //estado
 let id = '';
 const postImage = document.getElementById('formFile');
-console.log(postImage);
 
 $(document).ready(function () {
-  
+
+  // Obtener y mostrar foto de perfil del usuario actual en el input de crear post
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const profileImageUrl = await obtenerFotoPerfil(user.uid);
+      $('#userAvatar').attr('src', profileImageUrl); // Asigna foto al avatar en el input de crear post
+    }
+  });
+
   $('#boton-post').click(function (e) {
     e.preventDefault();
     const mensaje = $('#opinion').val();
     const image = postImage.files[0];
-    console.log("click publicado");
 
     if (mensaje === "") {
       alert("No puedes publicar un comentario vacío.");
     } else {
       if (editStatus) {
         actualizado(id, { comentario: mensaje }).then(() => {
-          console.log("Post actualizado");
           resetForm();
           $('#postModal').modal('hide');
           cargarDatos();
@@ -36,7 +35,6 @@ $(document).ready(function () {
         });
       } else {
         agregarPost(mensaje, image).then(() => {
-          console.log("Post guardado");
           resetForm();
           $('#postModal').modal('hide');
           cargarDatos();
@@ -49,28 +47,31 @@ $(document).ready(function () {
 
   cargarDatos();
 
-  function cargarDatos() {
+  // Función para cargar datos de publicaciones
+  async function cargarDatos() {
     const postList = $('#totalC');
     postList.html("");
     totalPost().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach(async (doc) => {
         const postData = doc.data();
         const postId = doc.id;
         const verificarAutorPost = auth.currentUser && auth.currentUser.uid === postData.uid;
-
         let fechaPublicacion = postData.timestamp ? new Date(postData.timestamp.toDate()).toLocaleString() : "Fecha no disponible";
         
+        // Obtener URL de la foto de perfil del usuario desde Firebase Storage
+        const profileImageUrl = await obtenerFotoPerfil(postData.uid);
+
         postList.append(`
           <div class="feed mb-4 p-3 border" data-id="${postId}">
             <div class="d-flex mb-3">
-              <img src="https://via.placeholder.com/50" class="profile-pic me-3" alt="Profile Picture">
-              <div>
+              <img src="${profileImageUrl}" class="profile-pic me-3" alt="Profile Picture">
+              <div class="Usuario">
                 <h4 id="nombreUsuario" class="mb-1">${postData.displayName || 'Usuario anónimo'}</h4>
               </div>
               <h6>${fechaPublicacion}</h6>
             </div>
             <div class="card-body">
-              <p>${postData.comentario}</p>
+              <p id="comentario">${postData.comentario}</p>
               ${postData.imageUrl ? `<img src="${postData.imageUrl}" alt="Imagen de publicación" class="img-fluid rounded">` : ''}
             </div>
             <div class="d-flex justify-content-between">
@@ -98,20 +99,19 @@ $(document).ready(function () {
             </div>
           </div>
         `);
-        
 
         // Cargar comentarios en tiempo real para cada publicación
-        cargarComentariosEnTiempoReal(postId, (snapshot) => {
+        cargarComentariosEnTiempoReal(postId, async (snapshot) => {
           const commentsList = $(`#comments-list-${postId}`);
           commentsList.html(""); // Limpiar comentarios previos
           snapshot.forEach((doc) => {
             const commentData = doc.data();
             let fechaComentario = commentData.timestamp ? new Date(commentData.timestamp.toDate()).toLocaleString() : "Fecha no disponible";
-            
+
             commentsList.append(`
-              <div class="comment mb-2">
-                <strong>${commentData.displayName}</strong>: ${commentData.comentario}
-                <br><small>${fechaComentario}</small>
+              <div class="subcomentario mb-2">
+                <strong class="text">${commentData.displayName}</strong>: ${commentData.comentario}
+                <br><small class="text">${fechaComentario}</small>
               </div>
             `);
           });
@@ -119,6 +119,29 @@ $(document).ready(function () {
       });
     });
   }
+
+  // Obtener la URL de la foto de perfil del usuario desde Firebase Storage
+  async function obtenerFotoPerfil(userId) {
+    try {
+      const storage = getStorage();
+      const profileRef = ref(storage, `profileImages/${userId}`);
+      const photoURL = await getDownloadURL(profileRef);
+      return photoURL;
+    } catch (error) {
+      console.error("Error al obtener la foto de perfil:", error);
+      return 'https://via.placeholder.com/50'; // Imagen predeterminada
+    }
+  }
+  
+  // Cerrar sesión
+  $('#signOut').click(function () {
+    signOut(auth).then(() => {
+      window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+    }).catch((error) => {
+      console.error("Error al cerrar sesión: ", error);
+    });
+  });
+});
 
   $(document).on('click', '.submit-comment', function () {
     const postId = $(this).data('id');
@@ -140,7 +163,7 @@ $(document).ready(function () {
     id = '';
     editStatus = false;
   }
-});
+
 
 
 // Evento para Editar
@@ -259,24 +282,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Verifica si hay una casa asignada en localStorage
   const casaAsignada = localStorage.getItem("casaAsignada");
+  
+  // Define los colores para cada casa
+  const coloresCasas = {
+      athena: "#F37614",      // Color para Athena
+      luminaria: "#F37614", // Color para Luminaria
+      nova: "#F37614",        // Color para Nova
+      salus: "#F37614"       // Color para Salus
+  };
+
   if (casaAsignada) {
       // Define las rutas de las imágenes para cada casa
       const imagenesCasas = {
-          athena: "/assets/img/icons-cards/aguila.jpg",
-          luminaria: "/assets/img/icons-cards/fenix.jpg",
-          nova: "/assets/img/icons-cards/leon.jpg",
-          salus: "/assets/img/icons-cards/cisne.jpg"
+          athena: "../img/icons-cards/aguila.jpg",
+          luminaria: "../img/icons-cards/fenix.jpg",
+          nova: "../img/icons-cards/leon.jpg",
+          salus: "../img/icons-cards/cisne.jpg"
       };
 
-      // Muestra el nombre de la casa y su imagen correspondiente
+      // Muestra el nombre de la casa y su imagen correspondiente con color
       divCasa.innerHTML = `
-          <h2 class="text-primary">¡Tu casa es ${casaAsignada.charAt(0).toUpperCase() + casaAsignada.slice(1)}!</h2>
+          <h2 style="color: ${coloresCasas[casaAsignada]}">¡Tu casa es ${casaAsignada.charAt(0).toUpperCase() + casaAsignada.slice(1)}!</h2>
           <img src="${imagenesCasas[casaAsignada]}" alt="${casaAsignada}" class="img-fluid rounded" style="width: 200px;">
       `;
   } else {
       // Si no hay casa asignada, muestra el botón con estilo de Bootstrap
       divCasa.innerHTML = `
-          <button class="btn btn-primary btn-lg" onclick="window.location.href='/assets/html/trivia.html'">Ir al Quiz de Asignación</button>
+          <button class="btn btn-primary btn-lg" onclick="window.location.href='../html/trivia.html'">Ir al Quiz de Asignación</button>
       `;
   }
+});
+
+
+// funcionalidad de los likes
+$(document).on('click', '.like-btn', function () {
+    const postId = $(this).data('id'); // Obtiene el ID del post
+    const likeButton = $(this); // Guarda una referencia al botón que fue clickeado
+
+    modificarLike(postId).then(() => {
+        // Obtener el nuevo contador de likes desde Firestore
+        obtenerPost(postId).then(doc => {
+          if (doc.exists()) {
+            const postData = doc.data();
+            // Actualizar el texto del botón con el nuevo contador de likes
+            likeButton.html(`${postData.likeContador} <i class="bi bi-heart-fill"></i>`);
+            } else {
+                console.error("El documento no existe.");
+            }
+        }).catch(error => {
+            console.error("Error al obtener el post:", error);
+        });
+    }).catch(error => {
+        console.error("Error al modificar el like:", error);
+    });
+});
+
+
+//CSS
+
+document.addEventListener("DOMContentLoaded", function () {
+  const footer = document.getElementById("footer");
+  setTimeout(() => {
+    footer.classList.add("loaded");
+  }, 1000); // Tiempo en milisegundos antes de que aparezca el footer
 });
